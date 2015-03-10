@@ -2,12 +2,12 @@
 
 Članovi tima:
 
-Dino Kraljušić  https://github.com/dinokraljusic
+[Dino Kraljušić]  (https://github.com/dinokraljusic)
 
 Amera Kadić
 
-Samra Mršo  https://github.com/samramrso
+[Samra Mršo]  (https://github.com/samramrso)
 
-Elvira Hajdarević  https://github.com/3lvira
+[Elvira Hajdarević]  (https://github.com/3lvira)
 
-Mersiha Mostić  https://github.com/mersihamostic
+[Mersiha Mostić]  (https://github.com/mersihamostic)
