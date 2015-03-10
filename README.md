@@ -4,7 +4,7 @@
 
 [Dino Kraljušić]  (https://github.com/dinokraljusic)
 
-Amera Kadić
+[Amera Kadić]  (https://github.com/akadic2)
 
 [Samra Mršo]  (https://github.com/samramrso)
 
