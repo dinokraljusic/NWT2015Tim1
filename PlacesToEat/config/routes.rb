@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+  #get 'restaurant_controller/show'
+
+  #get 'restaurant_controller/create'
+
   devise_for :users
+
+  namespace :api, defaults: { format: :json } do
+    # We are going to list our resources here
+    resources :users, :only => [:show, :create]
+    resources :restaurant, :only => [:show, :create]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,9 +64,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  namespace :api, defaults: { format: :json } do
-    # We are going to list our resources here
-    resources :users, :only => [:show, :create]
-  end
+
 
 end

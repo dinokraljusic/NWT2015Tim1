@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321172848) do
+ActiveRecord::Schema.define(version: 20150321185815) do
 
   create_table "korisnik", force: :cascade do |t|
     t.integer "role",      limit: 4,     null: false
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 20150321172848) do
     t.text "prezime", limit: 65535, null: false
     t.text "adresa",  limit: 65535, null: false
   end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "address",    limit: 255
+    t.string   "menu",       limit: 255
+    t.float    "lon",        limit: 24
+    t.float    "lat",        limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id",    limit: 4
+  end
+
+  add_index "restaurants", ["user_id"], name: "fk_rails_aef57e41ec", using: :btree
 
   create_table "restoran", force: :cascade do |t|
     t.text   "naziv",  limit: 65535, null: false
@@ -65,9 +78,14 @@ ActiveRecord::Schema.define(version: 20150321172848) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name",                   limit: 255
+    t.string   "lastname",               limit: 255
+    t.string   "username",               limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "restaurants", "users"
 end
