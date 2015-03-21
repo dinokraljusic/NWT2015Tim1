@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - @50.87.43.125" uuid="1024f5bb-8f93-4563-89a0-fd3e7a1f1cc0">
+      <secret-storage>master_key</secret-storage>
+      <user-name>mmexpba_mersiha</user-name>
+      <schema-pattern>mmexpba_Restorani.*</schema-pattern>
+      <default-schemas>mmexpba_Restorani.*</default-schemas>
+    </data-source>
+  </component>
+</project>
