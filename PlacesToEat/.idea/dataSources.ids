@@ -28,6 +28,34 @@
       <column name="adresa" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
+    <table name="ratings" schema="" catalog="mmexpba_Restorani" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="restaurant_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="rate" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_rails_d1b37b4fd3" columns="restaurant_id" ref-table="restaurants" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_rails_a7dfeb9f5f" columns="user_id" ref-table="users" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_rails_a7dfeb9f5f" unique="false" columns="user_id"/>
+      <index name="fk_rails_d1b37b4fd3" unique="false" columns="restaurant_id"/>
+    </table>
+    <table name="reservations" schema="" catalog="mmexpba_Restorani" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="time_from" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="time_to" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="num" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="restaurant_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_rails_0d6bc84231" columns="restaurant_id" ref-table="restaurants" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_rails_48a92fce51" columns="user_id" ref-table="users" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_rails_0d6bc84231" unique="false" columns="restaurant_id"/>
+      <index name="fk_rails_48a92fce51" unique="false" columns="user_id"/>
+    </table>
     <table name="restaurants" schema="" catalog="mmexpba_Restorani" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -40,6 +68,8 @@
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_rails_aef57e41ec" columns="user_id" ref-table="users" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_rails_d1b37b4fd3" table="ratings" schema="" catalog="mmexpba_Restorani" columns="restaurant_id"/>
+      <exported-key name="fk_rails_0d6bc84231" table="reservations" schema="" catalog="mmexpba_Restorani" columns="restaurant_id"/>
       <index name="fk_rails_aef57e41ec" unique="false" columns="user_id"/>
     </table>
     <table name="restoran" schema="" catalog="mmexpba_Restorani" type="TABLE">
@@ -68,6 +98,7 @@
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_rails_642f17018b" table="users" schema="" catalog="mmexpba_Restorani" columns="role_id"/>
       <index name="index_roles_on_name" unique="true" columns="name"/>
     </table>
     <table name="schema_migrations" schema="" catalog="mmexpba_Restorani" type="TABLE">
@@ -91,11 +122,16 @@
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lastname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_rails_642f17018b" columns="role_id" ref-table="roles" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_rails_a7dfeb9f5f" table="ratings" schema="" catalog="mmexpba_Restorani" columns="user_id"/>
+      <exported-key name="fk_rails_48a92fce51" table="reservations" schema="" catalog="mmexpba_Restorani" columns="user_id"/>
       <exported-key name="fk_rails_aef57e41ec" table="restaurants" schema="" catalog="mmexpba_Restorani" columns="user_id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
       <index name="index_users_on_reset_password_token" unique="true" columns="reset_password_token"/>
       <index name="index_users_on_username" unique="true" columns="username"/>
+      <index name="fk_rails_642f17018b" unique="false" columns="role_id"/>
     </table>
   </data-source>
   <data-source name="Rails PlacesToEat: development" uuid="00c93679-4f4d-411c-b26f-129c2f5b388e">
@@ -126,6 +162,34 @@
       <column name="adresa" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
+    <table name="ratings" schema="" catalog="mmexpba_Restorani" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="restaurant_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="rate" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_rails_d1b37b4fd3" columns="restaurant_id" ref-table="restaurants" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_rails_a7dfeb9f5f" columns="user_id" ref-table="users" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_rails_a7dfeb9f5f" unique="false" columns="user_id"/>
+      <index name="fk_rails_d1b37b4fd3" unique="false" columns="restaurant_id"/>
+    </table>
+    <table name="reservations" schema="" catalog="mmexpba_Restorani" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="time_from" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="time_to" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="num" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="restaurant_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_rails_0d6bc84231" columns="restaurant_id" ref-table="restaurants" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_rails_48a92fce51" columns="user_id" ref-table="users" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_rails_0d6bc84231" unique="false" columns="restaurant_id"/>
+      <index name="fk_rails_48a92fce51" unique="false" columns="user_id"/>
+    </table>
     <table name="restaurants" schema="" catalog="mmexpba_Restorani" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -138,6 +202,8 @@
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_rails_aef57e41ec" columns="user_id" ref-table="users" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_rails_d1b37b4fd3" table="ratings" schema="" catalog="mmexpba_Restorani" columns="restaurant_id"/>
+      <exported-key name="fk_rails_0d6bc84231" table="reservations" schema="" catalog="mmexpba_Restorani" columns="restaurant_id"/>
       <index name="fk_rails_aef57e41ec" unique="false" columns="user_id"/>
     </table>
     <table name="restoran" schema="" catalog="mmexpba_Restorani" type="TABLE">
@@ -162,6 +228,13 @@
       <column name="naziv" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
+    <table name="roles" schema="" catalog="mmexpba_Restorani" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_rails_642f17018b" table="users" schema="" catalog="mmexpba_Restorani" columns="role_id"/>
+      <index name="index_roles_on_name" unique="true" columns="name"/>
+    </table>
     <table name="schema_migrations" schema="" catalog="mmexpba_Restorani" type="TABLE">
       <column name="version" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <index name="unique_schema_migrations" unique="true" columns="version"/>
@@ -183,11 +256,16 @@
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lastname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_rails_642f17018b" columns="role_id" ref-table="roles" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_rails_a7dfeb9f5f" table="ratings" schema="" catalog="mmexpba_Restorani" columns="user_id"/>
+      <exported-key name="fk_rails_48a92fce51" table="reservations" schema="" catalog="mmexpba_Restorani" columns="user_id"/>
       <exported-key name="fk_rails_aef57e41ec" table="restaurants" schema="" catalog="mmexpba_Restorani" columns="user_id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
       <index name="index_users_on_reset_password_token" unique="true" columns="reset_password_token"/>
       <index name="index_users_on_username" unique="true" columns="username"/>
+      <index name="fk_rails_642f17018b" unique="false" columns="role_id"/>
     </table>
   </data-source>
   <data-source name="Rails PlacesToEat: test" uuid="a4e25b7b-4cca-4a4e-96de-524b88186feb">

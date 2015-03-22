@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'all_users/index'
+
+  get 'static_pages/index'
+
+  get 'static_pages/index'
+  root 'static_pages#index'
+
+=begin
   namespace :api do
   get 'reservation/show'
   end
@@ -6,6 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
   get 'reservation/create'
   end
+=end
 
 =begin
   namespace :api do
