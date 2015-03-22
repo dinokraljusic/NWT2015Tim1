@@ -1,4 +1,30 @@
 Rails.application.routes.draw do
+  namespace :api do
+  get 'reservation/show'
+  end
+
+  namespace :api do
+  get 'reservation/create'
+  end
+
+=begin
+  namespace :api do
+  get 'rating/show'
+  end
+
+  namespace :api do
+  get 'rating/create'
+  end
+
+  namespace :api do
+  get 'role/show'
+  end
+
+  namespace :api do
+  get 'role/create'
+  end
+=end
+
   #get 'restaurant_controller/show'
 
   #get 'restaurant_controller/create'
@@ -9,6 +35,9 @@ Rails.application.routes.draw do
     # We are going to list our resources here
     resources :users, :only => [:show, :create]
     resources :restaurant, :only => [:show, :create]
+    resources :role, :only => [:show, :create]
+    resources :rating, :only => [:show, :create]
+    resources :reservation, :only => [:show, :create]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

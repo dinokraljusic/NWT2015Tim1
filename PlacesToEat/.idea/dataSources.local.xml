@@ -7,5 +7,21 @@
       <schema-pattern>mmexpba_Restorani.*</schema-pattern>
       <default-schemas>mmexpba_Restorani.*</default-schemas>
     </data-source>
+    <data-source name="Rails PlacesToEat: development" uuid="00c93679-4f4d-411c-b26f-129c2f5b388e">
+      <user-name>mmexpba_mersiha</user-name>
+      <user-password>dfe4dfcfdfc1dfd8dfcfdfdedfc4dfc3dfc4dfcfdf9bdf98df99</user-password>
+      <schema-pattern>mmexpba_Restorani.*</schema-pattern>
+      <default-schemas>mmexpba_Restorani.*</default-schemas>
+    </data-source>
+    <data-source name="Rails PlacesToEat: test" uuid="a4e25b7b-4cca-4a4e-96de-524b88186feb">
+      <first-sync>true</first-sync>
+      <user-name>mmexpba_mersiha</user-name>
+      <user-password>dfe4dfcfdfc1dfd8dfcfdfdedfc4dfc3dfc4dfcfdf9bdf98df99</user-password>
+    </data-source>
+    <data-source name="Rails PlacesToEat: production" uuid="89c1828f-74dc-42ba-8ecd-9e4e9a48d13d">
+      <first-sync>true</first-sync>
+      <user-name>PlacesToEat</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddffadfe6dfebdfe9dfefdff9dffedfe5dfefdfebdffedff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
   </component>
 </project>
