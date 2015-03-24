@@ -14,6 +14,28 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    #User.delete(params[:id])
+    user = User.find(params[:id])
+    if user.destroy
+      render json: user, status: 201, location: [:api, user]
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+    #respond_with user, :location => all_users_index_url
+  end
+
+  def update
+    #User.delete(params[:id])
+    user = User.find(params[:id])
+    user.update(user_params)
+    if user.save
+      render json: user, status: 201, location: [:api, user]
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+  end
+
   private
 
   def user_params

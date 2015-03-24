@@ -13,6 +13,28 @@ class Api::ReservationController < ApplicationController
     end
   end
 
+  def destroy
+    #User.delete(params[:id])
+    reservation = Reservation.find(params[:id])
+    if reservation.destroy
+      render json: reservation, status: 201, location: [:api, reservation]
+    else
+      render json: { errors: reservation.errors }, status: 422
+    end
+    #respond_with user, :location => all_users_index_url
+  end
+
+  def update
+    #User.delete(params[:id])
+    reservation = Reservation.find(params[:id])
+    reservation.update(reservation_params)
+    if reservation.save
+      render json: reservation, status: 201, location: [:api, reservation]
+    else
+      render json: { errors: reservation.errors }, status: 422
+    end
+  end
+
   private
 
   def reservation_params

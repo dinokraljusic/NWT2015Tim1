@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'all_users/index'
 
+  get 'all_users/index'
+
   get 'static_pages/index'
 
   get 'static_pages/index'
@@ -42,11 +44,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     # We are going to list our resources here
-    resources :users, :only => [:show, :create]
-    resources :restaurant, :only => [:show, :create]
-    resources :role, :only => [:show, :create]
-    resources :rating, :only => [:show, :create]
-    resources :reservation, :only => [:show, :create]
+    resources :users, :only => [:show, :create, :destroy, :update]
+    resources :restaurant, :only => [:show, :create, :destroy, :update]
+    resources :role, :only => [:show, :create, :destroy, :update]
+    resources :rating, :only => [:show, :create, :destroy, :update]
+    resources :reservation, :only => [:show, :create, :destroy, :update]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

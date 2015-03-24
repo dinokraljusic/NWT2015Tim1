@@ -13,6 +13,28 @@ class Api::RestaurantController < ApplicationController
     end
   end
 
+  def destroy
+    #User.delete(params[:id])
+    restaurant = Restaurant.find(params[:id])
+    if restaurant.destroy
+      render json: restaurant, status: 201, location: [:api, restaurant]
+    else
+      render json: { errors: restaurant.errors }, status: 422
+    end
+    #respond_with user, :location => all_users_index_url
+  end
+
+  def update
+    #User.delete(params[:id])
+    restaurant = Restaurant.find(params[:id])
+    restaurant.update(restaurant_params)
+    if restaurant.save
+      render json: restaurant, status: 201, location: [:api, restaurant]
+    else
+      render json: { errors: restaurant.errors }, status: 422
+    end
+  end
+
   private
 
   def restaurant_params
