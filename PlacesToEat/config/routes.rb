@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  get 'sessions/new'
+
+
   get 'all_users/index'
 
   get 'all_users/index'
@@ -7,6 +11,9 @@ Rails.application.routes.draw do
 
   get 'static_pages/index'
   root 'static_pages#index'
+
+  #get 'user' => 'api/users#show'
+
 
 =begin
   namespace :api do
@@ -36,6 +43,10 @@ Rails.application.routes.draw do
   end
 =end
 
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
   #get 'restaurant_controller/show'
 
   #get 'restaurant_controller/create'
@@ -43,6 +54,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :api, defaults: { format: :json } do
+
     # We are going to list our resources here
     resources :users, :only => [:show, :create, :destroy, :update]
     resources :restaurant, :only => [:show, :create, :destroy, :update]

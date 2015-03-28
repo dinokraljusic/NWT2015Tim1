@@ -1,5 +1,12 @@
 <div class="sadrzaj">
 <h1>Places To Eat Main Page</h1>
   <a href="/api/users/2">User2</a>
-  <a href="/all_users/index">All users</a>
+  <a href="/all_users/index">All users</a> <br/>
+  <% if logged_in? %>
+      <%= button_to "Log out", logout_path, :method => "delete" %>
+<!--      <%= link_to "Log out", logout_path, method: :delete %>-->
+  <% else %>
+      <%= link_to "Log in", login_path %>
+  <% end %>
+<!--  <a href="/login">Login</a>-->
 </div>
