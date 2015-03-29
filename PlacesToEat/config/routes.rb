@@ -47,6 +47,9 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+ # get 'signup'  =>  'new_api_user_path'
+
+
   #get 'restaurant_controller/show'
 
   #get 'restaurant_controller/create'
@@ -56,12 +59,19 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
 
     # We are going to list our resources here
-    resources :users, :only => [:show, :create, :destroy, :update]
+   # resources :users, :only => [:show, :create, :destroy, :update]
+    resources :users
     resources :restaurant, :only => [:show, :create, :destroy, :update]
     resources :role, :only => [:show, :create, :destroy, :update]
     resources :rating, :only => [:show, :create, :destroy, :update]
     resources :reservation, :only => [:show, :create, :destroy, :update]
   end
+
+ # namespace :api, defaults: { format: :html } do
+    get 'signup'  =>  'api/users#new'
+    get 'profile/:id' =>  'api/users#show'
+    post 'signup'  =>  'api/users#create'
+  #end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

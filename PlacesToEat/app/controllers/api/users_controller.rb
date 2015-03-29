@@ -1,17 +1,26 @@
 class Api::UsersController < ApplicationController
-  respond_to :json
+  respond_to :json, :html
 
   def show
-    respond_with User.find(params[:id])
+    #respond_with User.find(params[:id])
+    user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: user }
+    end
+    #respond_with user
   end
 
   def create
     user = User.new(user_params)
-    if user.save
-      render json: user, status: 201, location: [:api, user]
-    else
-      render json: { errors: user.errors }, status: 422
-    end
+      if user.save
+        respond_to do |format|
+          format.html { redirect_to root_path}
+          format.json { render json: user, status: 201, location: [:api, user]}
+        end
+      else
+       render json: { errors: user.errors }, status: 422
+      end
   end
 
   def destroy
@@ -33,6 +42,14 @@ class Api::UsersController < ApplicationController
       render json: user, status: 201, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422
+    end
+  end
+
+  def new
+    @user = User.new
+    respond_to do |format|
+      format.html
+      format.json {render :json => @user}
     end
   end
 
