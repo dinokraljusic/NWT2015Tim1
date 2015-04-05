@@ -1,12 +1,17 @@
-<div class="sadrzaj">
+<div class="sadrzaj" ng-app="probna" ng-controller="mainController">
 <h1>Places To Eat Main Page</h1>
-  <a href="/api/users/2">User2</a>
-  <a href="/all_users/index">All users</a> <br/>
   <% if logged_in? %>
       <%= button_to "Log out", logout_path, :method => "delete" %>
 <!--      <%= link_to "Log out", logout_path, method: :delete %>-->
   <% else %>
-      <%= link_to "Log in", login_path %>
+      <a href="#login"><i class="fa fa-comment"></i> Login </a>
+
+      <div id="main">
+
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
+
+      </div>
   <% end %>
-<!--  <a href="/login">Login</a>-->
 </div>

@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
 
-  get 'all_users/index'
-
-  get 'all_users/index'
+  #get 'all_users/index'
 
   get 'static_pages/index'
 
@@ -71,6 +69,7 @@ Rails.application.routes.draw do
     get 'signup'  =>  'api/users#new'
     get 'profile/:id' =>  'api/users#show'
     post 'signup'  =>  'api/users#create'
+    get 'profiles' =>  'api/users#index'
   #end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

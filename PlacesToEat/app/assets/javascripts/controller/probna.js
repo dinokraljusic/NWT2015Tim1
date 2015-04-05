@@ -1,7 +1,7 @@
 /**
  * Created by Dino on 3/22/2015.
  */
-probna.controller('PrviCtrl', ['$scope','$http', function($scope,$http){
+/*probna.controller('PrviCtrl', ['$scope','$http', function($scope,$http){
     $scope.poziv1 = function(){
         $http.get('/api/users/'+$scope.id).
             success(function(data, status, headers, config) {
@@ -26,4 +26,4 @@ probna.controller('PrviCtrl', ['$scope','$http', function($scope,$http){
                 alert(data.toSource());
             });
     };
-}]);
+}]);*/
