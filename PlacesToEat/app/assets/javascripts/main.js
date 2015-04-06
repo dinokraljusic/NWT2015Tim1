@@ -26,6 +26,9 @@ app.config(function($routeProvider, $locationProvider) {
         .when('/signup', {
             templateUrl: '/signup'
         })
+        .when('/resetPassword', {
+            templateUrl: '/password_reset/new'
+        })
         .otherwise({
             redirectTo: '/'
         });
