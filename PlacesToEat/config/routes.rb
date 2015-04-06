@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'password_reset/new'
+
+  post   'pass_reset'   => 'password_reset#create'
+
+  get 'pass_reset_edit'   => 'password_reset#edit'
+
+  patch 'pass_reset_edit'   => 'password_reset#update'
+
+  resources :password_reset,     only: [:new, :create, :edit, :update]
+
   get 'sessions/new'
 
 

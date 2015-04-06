@@ -23,8 +23,12 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/login',
             controller: 'loginController'
         })
-
-
+        .when('/signup', {
+            templateUrl: '/signup'
+        })
+        .when('/resetPassword', {
+            templateUrl: '/password_reset/new'
+        })
         .otherwise({
             redirectTo: '/'
         });

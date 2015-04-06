@@ -19,4 +19,17 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def SessionsHelper.issue_token(user)
+    JWT.encode(payload, Rails.application.secrets.secret_key_base)
+  end
+
+  def SessionsHelper.valid?(token)
+    begin
+      JWT.decode(token, Rails.application.secrets.secret_key_base)
+    rescue
+      false
+    end
+  end
+
 end
