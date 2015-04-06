@@ -23,9 +23,8 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/login',
             controller: 'loginController'
         })
-        .when('/signup', {
-            templateUrl: '/signup'
-        })
+
+
         .otherwise({
             redirectTo: '/'
         });
