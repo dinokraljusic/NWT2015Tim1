@@ -3,6 +3,12 @@
  */
 'use strict';
 
+/*var onloadCallback = function() {
+    grecaptcha.render('recaptcha', {
+        'sitekey' : '6LcS6gUTAAAAAP4v4dFU6TuttJAasAllXeTVL-Tx'
+    });
+};*/
+
 var app = angular.module('probna', [
     'ngRoute'
 ]);

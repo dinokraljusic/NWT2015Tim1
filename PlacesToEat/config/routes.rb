@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+  get 'activate_user' => 'sessions#new'
+
 
   #get 'all_users/index'
 

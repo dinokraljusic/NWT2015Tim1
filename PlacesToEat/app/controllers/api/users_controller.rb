@@ -12,14 +12,19 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-      if user.save
-        respond_to do |format|
-          format.html { redirect_to root_path}
-          format.json { render json: user, status: 201, location: [:api, user]}
+      user = User.new(user_params)
+      captcha_message = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
+      if verify_recaptcha(model: user, message: captcha_message)
+        if user.save
+          user.send_activation_email
+          respond_to do |format|
+            format.html { redirect_to root_path}
+            format.json { render json: user, status: 201, location: [:api, user]}
+          end
+        else
+         render json: { errors: user.errors }, status: 422
         end
-      else
-       render json: { errors: user.errors }, status: 422
+      else render 'static_pages/index'
       end
   end
 
@@ -69,5 +74,6 @@ class Api::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :lastname, :username, :role_id)
   end
+
 
 end

@@ -122,7 +122,8 @@
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lastname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="Mw=="/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_rails_642f17018b" columns="role_id" ref-table="roles" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_rails_a7dfeb9f5f" table="ratings" schema="" catalog="mmexpba_Restorani" columns="user_id"/>
@@ -256,7 +257,7 @@
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lastname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="role_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="Mw=="/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_rails_642f17018b" columns="role_id" ref-table="roles" ref-schema="" ref-catalog="mmexpba_Restorani" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_rails_a7dfeb9f5f" table="ratings" schema="" catalog="mmexpba_Restorani" columns="user_id"/>

@@ -18,6 +18,12 @@ class User < ActiveRecord::Base
     JWT.encode({ user_id: id }, Rails.application.secrets.secret_key_base)
   end
 
+
+  def send_activation_email
+    UserMailer.activate_account(self).deliver_now
+  end
+
+
   def password_reset_expired?
     reset_password_sent_at < 2.hours.ago
   end
