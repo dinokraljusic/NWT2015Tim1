@@ -27,4 +27,14 @@ class User < ActiveRecord::Base
   def password_reset_expired?
     reset_password_sent_at < 2.hours.ago
   end
+
+  def update_login_params
+    update_attribute(:sign_in_count, sign_in_count+1)
+    update_attribute(:current_sign_in_at, Time.zone.now)
+  end
+
+  def update_logout_params
+    update_attribute(:last_sign_in_at, current_sign_in_at)
+    update_attribute(:current_sign_in_at, nil)
+  end
 end

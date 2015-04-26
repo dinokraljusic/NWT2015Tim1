@@ -29,6 +29,9 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/login',
             controller: 'loginController'
         })
+        .when('/logout', {
+            templateUrl: '/logout'
+        })
         .when('/signup', {
             templateUrl: '/signup'
         })

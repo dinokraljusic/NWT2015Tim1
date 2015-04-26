@@ -2,6 +2,7 @@ module SessionsHelper
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
+    user.update_login_params
   end
 
   # Returns the current logged-in user (if any).
@@ -16,6 +17,7 @@ module SessionsHelper
 
   # Logs out the current user.
   def log_out
+    current_user.update_logout_params
     session.delete(:user_id)
     @current_user = nil
   end

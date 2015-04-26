@@ -11,8 +11,25 @@
   <%= csrf_meta_tags %>
   <base href="/">
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application" %>
 </head>
 <body>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Places To Eat", '#', id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   '#' %></li>
+      <!--  <li><%= link_to "Help",   '#' %></li>-->
+        <% if logged_in? %>
+            <li class="button-nav"> <%= button_to "Log out", logout_path, :method => "delete", :class => "button" %></li>
+        <% else %>
+            <li><a href="#login"> Login </a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
 <!--<a href="#/allUsers"> All Users </a>-->
 
 <%= yield %>

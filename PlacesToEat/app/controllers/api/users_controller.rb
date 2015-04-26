@@ -4,11 +4,13 @@ class Api::UsersController < ApplicationController
   def show
     #respond_with User.find(params[:id])
     user = User.find(params[:id])
+=begin
     respond_to do |format|
       format.html
       format.json { render json: user }
     end
-    #respond_with user
+=end
+    respond_with user
   end
 
   def create

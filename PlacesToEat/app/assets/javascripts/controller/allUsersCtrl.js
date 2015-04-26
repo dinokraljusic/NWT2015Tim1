@@ -11,5 +11,5 @@ probna.controller('allUsersCtrl', function ($scope, $location) {
 */
 /**
  * Created by Home on 4/6/2015.
- *//*
+ */
 
