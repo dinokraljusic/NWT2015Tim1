@@ -36,6 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    angular-translate-rails (2.6.0)
+      railties (>= 3.1)
+    angular-ui-bootstrap-rails (0.12.1)
     angularjs-rails (1.2.26)
     arel (6.0.0)
     autoprefixer-rails (5.1.11)
@@ -171,6 +174,8 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  angular-translate-rails (~> 2.6.0)
+  angular-ui-bootstrap-rails
   angularjs-rails (~> 1.2.25)
   bcrypt (~> 3.1.2)
   bootstrap-sass (~> 3.3.4.1)

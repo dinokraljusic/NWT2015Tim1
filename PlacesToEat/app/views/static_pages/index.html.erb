@@ -1,17 +1,24 @@
-<div class="sadrzaj" ng-app="probna" ng-controller="mainController">
+<div class="sadrzaj" ng-app="probna">
 <h1>Places To Eat Main Page</h1>
-  <% if logged_in? %>
-<!--      <%= button_to "Log out", logout_path, :method => "delete" %>-->
-<!--      <%= link_to "Log out", logout_path, method: :delete %>-->
-  <% else %>
-      <!--<a href="#login"><i class="fa fa-comment"></i> Login </a>-->
+
 
       <div id="main">
 
         <!-- angular templating -->
         <!-- this is where content will be injected -->
         <div ng-view></div>
-
       </div>
-  <% end %>
+
+  <div ng-controller="restaurantController">
+    <table class="table table-striped">
+    <tr ng-repeat="restaurant in restaurants">
+      <td><button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{restaurant.name}}</button></td>
+      <td>
+        <div collapse="isCollapsed">
+          <div class="well well-lg">Some content</div>
+        </div>
+      </td>
+    </tr>
+    </table>
+  </div>
 </div>

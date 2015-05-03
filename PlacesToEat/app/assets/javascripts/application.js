@@ -15,5 +15,7 @@
 //= require angular
 //= require main
 //= require angular-route
+//= require angular-ui-bootstrap
+//= require angular-translate
 
 //= require_tree .

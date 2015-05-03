@@ -19,24 +19,38 @@
     <%= link_to "Places To Eat", '#', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
+        <li><a translate href="#"> HOME </a></li>
       <!--  <li><%= link_to "Help",   '#' %></li>-->
         <% if logged_in? %>
-            <li class="button-nav"> <%= button_to "Log out", logout_path, :method => "delete", :class => "button" %></li>
+            <li>
+              <div class="btn-group" dropdown is-open="status.isopen">
+                <button type="button" class="button-nav btn btn-primary dropdown-toggle" dropdown-toggle>
+                  <%= current_user.name %> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#profile" translate> EDIT_PROFILE </a></li>
+                  <li class="dropdown-button"> <%= button_to "Log out", logout_path, :method => "delete", :class => "button" %></li>
+                </ul>
+              </div>
+            </li>
+
         <% else %>
-            <li><a href="#login"> Login </a></li>
+            <li><a translate href="#login"> LOGIN </a></li>
         <% end %>
+        <li> <a back-img={{url}} class="language-icon" ng-controller="translateController" ng-click="toggleLanguage()"></a></li>
       </ul>
     </nav>
   </div>
 </header>
 <!--<a href="#/allUsers"> All Users </a>-->
 
-<%= yield %>
+<div class="container">
+  <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 
-<% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name %>
-<% end -%>
+  <%= yield %>
+</div>
 
 </body>
 </html>

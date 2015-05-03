@@ -4,6 +4,10 @@ class Api::RestaurantController < ApplicationController
     respond_with Restaurant.find(params[:id])
   end
 
+  def index
+    respond_with Restaurant.all
+  end
+
   def create
     restaurant = Restaurant.new(restaurant_params)
     if restaurant.save

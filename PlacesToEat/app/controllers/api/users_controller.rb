@@ -60,6 +60,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def edit
+    if current_user
+      @user=current_user
+    else
+      flash.now[:danger]="Not logged in!"
+    end
+  end
+
   def authenticate
     user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])

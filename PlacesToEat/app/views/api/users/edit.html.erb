@@ -1,9 +1,8 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h1><%= @user.name %> 's Profile</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user, :format => :html, url: signup_path, html: { method: :post }) do |f| %>
+    <%= form_for(@user, :format => :json, url: api_user_path(@user), html: { method: :patch }) do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control'%>
 
@@ -11,7 +10,7 @@
         <%= f.text_field :lastname, class: 'form-control' %>
 
         <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
+        <%= f.email_field :email, class: 'form-control', disabled: true%>
 
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>
@@ -19,9 +18,10 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-        <div id="recaptcha"> <%= recaptcha_tags %> </div>
+        <%= f.label :last_sign_in_at%>
+        <%= f.text_field :last_sign_in_at, class: 'form-control', disabled: true %>
 
-        <%= f.submit "Create my account", class: "btn btn-primary", style:"margin-top:9px;" %>  <!--temp-->
+        <%= f.submit "Update my account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

@@ -71,7 +71,7 @@ Rails.application.routes.draw do
     # We are going to list our resources here
    # resources :users, :only => [:show, :create, :destroy, :update]
     resources :users
-    resources :restaurant, :only => [:show, :create, :destroy, :update]
+    resources :restaurant, :only => [:show, :create, :destroy, :update, :index]
     resources :role, :only => [:show, :create, :destroy, :update]
     resources :rating, :only => [:show, :create, :destroy, :update]
     resources :reservation, :only => [:show, :create, :destroy, :update]
@@ -79,7 +79,7 @@ Rails.application.routes.draw do
 
  # namespace :api, defaults: { format: :html } do
     get 'signup'  =>  'api/users#new'
-    get 'profile/:id' =>  'api/users#show'
+    get 'profile' =>  'api/users#edit'
     post 'signup'  =>  'api/users#create'
     get 'profiles' =>  'api/users#index'
   #end
