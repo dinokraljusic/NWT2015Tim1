@@ -11,14 +11,16 @@ var app = angular.module('probna', [
         'HOME': 'Početna',
         'EDIT_PROFILE': 'Uredi profil',
         'LOGIN': 'Prijava',
-        'LOGOUT': 'Odjava'
+        'LOGOUT': 'Odjava',
+        'EMAIL': 'e-Mail'
     });
     // register english translation table
     $translateProvider.translations('en_EN', {
         'HOME': 'Home',
         'EDIT_PROFILE': 'Edit profile',
         'LOGIN': 'Login',
-        'LOGOUT': 'Log out'
+        'LOGOUT': 'Log out',
+        'EMAIL': 'Email'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);

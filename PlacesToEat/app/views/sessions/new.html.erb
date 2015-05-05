@@ -5,12 +5,13 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
 
-        <%= f.label :email %>
+        <label for="session_email" translate>EMAIL</label>
         <%= f.email_field :email, class: 'form-control' %>
 
         <%= f.label :password %>
         <a href="#resetPassword"><i class="fa fa-comment"></i> (Forgot password) </a>
         <%= f.password_field :password, class: 'form-control' %>
+
 
         <%= f.submit "Log in", style: 'margin-top:9px;', class: "btn btn-primary" %>
     <% end %>

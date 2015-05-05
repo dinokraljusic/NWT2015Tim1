@@ -3,9 +3,12 @@ app.controller('restaurantController', ['$scope','$http', function($scope, $http
         $http.get('/api/restaurant').
             success(function(data, status, headers, config) {
                 $scope.restaurants = data;
-
             }).
             error(function(data, status, headers, config) {
                 // log error
             });
+}]);
+
+app.controller('ratesController', ['$scope', function($scope) {
+    $scope.glupi=4;
 }]);
