@@ -12,15 +12,21 @@ var app = angular.module('probna', [
         'EDIT_PROFILE': 'Uredi profil',
         'LOGIN': 'Prijava',
         'LOGOUT': 'Odjava',
-        'EMAIL': 'e-Mail'
+        'EMAIL': 'e-Mail',
+        'PASSWORD' : 'Lozinka',
+        'FORGOT_PASSWORD': '(Zaboravili ste lozinku?)',
+        'SIGN_UP_NOW' : 'Registrujte se! '
     });
     // register english translation table
     $translateProvider.translations('en_EN', {
         'HOME': 'Home',
         'EDIT_PROFILE': 'Edit profile',
-        'LOGIN': 'Login',
+        'LOGIN': 'Log in',
         'LOGOUT': 'Log out',
-        'EMAIL': 'Email'
+        'EMAIL': 'Email',
+        'PASSWORD' : 'Password',
+        'FORGOT_PASSWORD': '(Forgot password?)',
+        'SIGN_UP_NOW' : 'Sign up now! '
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);

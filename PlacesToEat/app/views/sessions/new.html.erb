@@ -8,15 +8,21 @@
         <label for="session_email" translate>EMAIL</label>
         <%= f.email_field :email, class: 'form-control' %>
 
-        <%= f.label :password %>
-        <a href="#resetPassword"><i class="fa fa-comment"></i> (Forgot password) </a>
+
+        <label for="session_password" translate>PASSWORD</label>
+
+        <a href="#resetPassword"><i class="fa fa-comment"></i>
+          <label for="(Forgot password)" translate>   FORGOT_PASSWORD</label>
+        </a>
         <%= f.password_field :password, class: 'form-control' %>
 
+        <%= f.submit "{{ 'LOGIN' | translate }}", style: 'margin-top:9px;', class: "btn btn-primary" %>
 
-        <%= f.submit "Log in", style: 'margin-top:9px;', class: "btn btn-primary" %>
     <% end %>
 
     <!--<p>New user? <a href="#signup"><i class="fa fa-comment"></i> Sign up now! </a></p>-->
-    <%= link_to "Sign up now! ", signup_path %>
+
+    <%= link_to "{{ 'SIGN_UP_NOW' | translate }}", signup_path %>
+
   </div>
 </div>
