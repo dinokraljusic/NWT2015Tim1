@@ -2,11 +2,12 @@
 <html ng-app="probna">
 <html>
 <head >
-  <!--<script src="angular.js"></script>-->
-  <!--<script src="angular-route.js"></script>-->
-  <!--<script src="jquery.js"></script>-->
+  <script src="angular.js"></script>
+  <script src="angular-route.js"></script>
+  <script src="jquery.js"></script>
   <!--<script src="controller/routes.js"></script>-->
   <!--<script src="controller/allUsersCtrl.js"></script>-->
+  <script src="views/api/reservation/reservationCtrl.js"></script>
   <title>PlacesToEat</title>
   <%= csrf_meta_tags %>
   <base href="/">
@@ -21,6 +22,12 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a translate href="#"> HOME </a></li>
       <!--  <li><%= link_to "Help",   '#' %></li>-->
+
+
+            <li><a  href="#reservation" ng-contoller="reservationCtrl" translate> MAKE_RESERVATION </a></li>
+
+
+
         <% if logged_in? %>
             <li>
               <div ng-controller="DropdownCtrl" class="btn-group" dropdown is-open="status.isopen">
@@ -28,11 +35,12 @@
                   <%= current_user.name %> <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
+
                   <li><a href="#profile" translate> EDIT_PROFILE </a></li>
                   <li class="dropdown-button"> <%= button_to "{{ 'LOGOUT' | translate }}", logout_path, :method => "delete", :class => "button" %></li>
                 </ul>
               </div>
-            </li>
+
 
         <% else %>
             <li><a translate href="#login"> LOGIN </a></li>

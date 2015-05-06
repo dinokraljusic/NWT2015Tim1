@@ -26,8 +26,7 @@ var app = angular.module('probna', [
         'CREATE_MY_ACCOUNT':'Kreiraj nalog',
         'UPDATE_MY_ACCOUNT':'Ažuriraj nalog',
         'SIGN_UP':'Registracija',
-        'ADDRESS':'Adresa',
-        'AVERAGE_RATING':'Prosječna ocjena'
+        'MAKE_RESERVATION':'Napravi rezervaciju'
     });
     // register english translation table
     $translateProvider.translations('en_EN', {
@@ -48,8 +47,7 @@ var app = angular.module('probna', [
         'CREATE_MY_ACCOUNT':'Create account',
         'UPDATE_MY_ACCOUNT':'Update my account',
         'SIGN_UP':'Sign up',
-        'ADDRESS':'Address',
-        'AVERAGE_RATING':'Average rating'
+        'MAKE_RESERVATION':'Make reservation'
 
     });
     $translateProvider.preferredLanguage('bs_BA');
