@@ -11,16 +11,17 @@
 
   <div ng-show="showRestaurant()" ng-controller="restaurantController">
     <table class="table table-striped">
-    <tr ng-repeat="restaurant in restaurants">
-      <td>
-        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{restaurant.name}}</button>
-        <div collapse="isCollapsed">
-          <div ng-controller="ratesController" class="well well-lg">{{restaurant.address}} </br> {{restaurant.avg}}
-            <rating ng-model="glupi" readonly="true"></rating>
+      <tr ng-repeat="restaurant in restaurants">
+        <td>
+          <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{restaurant.name}}</button>
+          <div collapse="isCollapsed">
+            <div class="well well-lg">
+              <label translate="ADDRESS"></label>: {{restaurant.address}} </br>
+              <label translate="AVERAGE_RATING"/></label>: {{restaurant.avg}}
+            </div>
           </div>
-        </div>
-      </td>
-    </tr>
+        </td>
+      </tr>
     </table>
   </div>
 </div>

@@ -23,7 +23,7 @@
       <!--  <li><%= link_to "Help",   '#' %></li>-->
         <% if logged_in? %>
             <li>
-              <div class="btn-group" dropdown is-open="status.isopen">
+              <div ng-controller="DropdownCtrl" class="btn-group" dropdown is-open="status.isopen">
                 <button type="button" class="button-nav btn btn-primary dropdown-toggle" dropdown-toggle>
                   <%= current_user.name %> <span class="caret"></span>
                 </button>
