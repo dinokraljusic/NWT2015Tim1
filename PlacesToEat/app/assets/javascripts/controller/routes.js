@@ -20,7 +20,7 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: '/password_reset/new'
         }).
         when('/profile', {
-            templateUrl: '/profile',
+            templateUrl: '/profile'
         }).
         otherwise({
             redirectTo: '/'

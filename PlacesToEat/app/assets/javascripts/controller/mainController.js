@@ -6,3 +6,7 @@ app.controller('mainCtrl', ['$scope', '$location', function($scope, $location) {
         return $location.path()==='/'
     };
 }]);
+/*
+app.controller('mainCtrl', ['$scope', '$location', function($scope, $location) {
+    $scope.currentPath = $location.path();
+}]);*/
