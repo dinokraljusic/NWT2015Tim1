@@ -20,7 +20,12 @@ var app = angular.module('probna', [
         'SUBMIT':'Pošalji',
         'RESET_PASSWORD': 'Nova lozinka',
         'PASSWORD_CONFIRMATION' : 'Potvrda lozinke',
-        'UPDATE_PASSWORD':'Kreiraj lozinku'
+        'UPDATE_PASSWORD':'Kreiraj lozinku',
+        'NAME':'Ime',
+        'LAST_NAME':'Prezime',
+        'CREATE_MY_ACCOUNT':'Kreiraj nalog',
+        'UPDATE_MY_ACCOUNT':'Ažuriraj nalog',
+        'SIGN_UP':'Registracija'
     });
     // register english translation table
     $translateProvider.translations('en_EN', {
@@ -36,7 +41,12 @@ var app = angular.module('probna', [
         'SUBMIT':'Submit',
         'RESET_PASSWORD': 'Reset password',
         'PASSWORD_CONFIRMATION' : 'Password confirmation',
-        'UPDATE_PASSWORD':'Update password'
+        'NAME':'Name',
+        'LAST_NAME':'Last name',
+        'CREATE_MY_ACCOUNT':'Create account',
+        'UPDATE_MY_ACCOUNT':'Update my account',
+        'SIGN_UP':'Sign up'
+
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
