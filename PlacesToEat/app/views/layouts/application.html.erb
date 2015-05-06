@@ -29,7 +29,7 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="#profile" translate> EDIT_PROFILE </a></li>
-                  <li translate="LOGOUT" class="dropdown-button"> <%= button_to "LOGOUT", logout_path, :method => "delete", :class => "button" %></li>
+                  <li class="dropdown-button"> <%= button_to "{{ 'LOGOUT' | translate }}", logout_path, :method => "delete", :class => "button" %></li>
                 </ul>
               </div>
             </li>
