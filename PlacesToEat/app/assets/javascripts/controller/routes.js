@@ -22,6 +22,11 @@ app.config(function($routeProvider, $locationProvider) {
         when('/profile', {
             templateUrl: '/profile'
         }).
+        when("/reservation",
+        {
+            controller: "reservationCtrl",
+            templateUrl: "api/reservation/create.html"
+        }).
         otherwise({
             redirectTo: '/'
         });

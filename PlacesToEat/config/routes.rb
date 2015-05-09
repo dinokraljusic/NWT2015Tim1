@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'activate_user' => 'sessions#new'
 
 
+
   #get 'all_users/index'
 
   get 'static_pages/index'
@@ -57,6 +58,8 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+
+
  # get 'signup'  =>  'new_api_user_path'
 
 
@@ -88,6 +91,7 @@ Rails.application.routes.draw do
     get 'profile' =>  'api/users#edit'
     post 'signup'  =>  'api/users#create'
     get 'profiles' =>  'api/users#index'
+
   #end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
