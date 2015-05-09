@@ -5,7 +5,7 @@ class Api::RestaurantController < ApplicationController
   end
 
   def index
-    restaurants = Restaurant.find_by_sql("select r.*, avg(ra.rate) avg from restaurants r left join ratings ra on r.id=ra.restaurant_id group by ra.restaurant_id")
+    restaurants = Restaurant.find_by_sql("select r.*, avg(ra.rate) avg from restaurants r left join ratings ra on r.id=ra.restaurant_id group by ra.restaurant_id order by avg desc")
     respond_with restaurants.to_json :methods => :avg
   end
 

@@ -50,6 +50,31 @@ p {
   line-height: 1.7em;
 }
 
+.restaurant-list{
+  width: 25%;
+  max-width:200px;
+  min-width:100px;
+  float:left;
+  //line-height: 1.7em;
+}
+.btn-restaurant-left{
+  background:none;
+  border:none;
+  //line-height: 1.7em;
+}
+.map{
+  //width:50%;
+  //float:right;
+  //line-height: 1.7em;
+}
+
+#map {
+ // height:420px;
+  height:80vh;
+  width:70vw;
+  float:right;
+}
+
 /* header */
 
 #logo {

@@ -77,6 +77,12 @@ Rails.application.routes.draw do
     resources :reservation, :only => [:show, :create, :destroy, :update]
   end
 
+  namespace :api, defaults: { format: :json } do
+    resources :users do
+      resources :rating
+    end
+  end
+
  # namespace :api, defaults: { format: :html } do
     get 'signup'  =>  'api/users#new'
     get 'profile' =>  'api/users#edit'

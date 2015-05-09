@@ -27,7 +27,10 @@ var app = angular.module('probna', [
         'UPDATE_MY_ACCOUNT':'Ažuriraj nalog',
         'SIGN_UP':'Registracija',
         'ADDRESS':'Adresa',
-        'AVERAGE_RATING':'Prosječna ocjena'
+        'AVERAGE_RATING':'Prosječna ocjena',
+        'MY_RATING' : 'Moja ocjena',
+        'NEW_RATING':'Ocjeni'
+
     });
     // register english translation table
     $translateProvider.translations('en_EN', {
@@ -49,11 +52,42 @@ var app = angular.module('probna', [
         'UPDATE_MY_ACCOUNT':'Update my account',
         'SIGN_UP':'Sign up',
         'ADDRESS':'Address',
-        'AVERAGE_RATING':'Average rating'
-
+        'AVERAGE_RATING':'Average rating',
+        'MY_RATING' : 'My rating',
+        'OWNER' : 'Owner',
+        'NEW_RATING':'Rate'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
+
+app.service('restaurantService', function($rootScope, $http, $q){
+    var defferer = $q.defer()
+
+    $http.get('/api/restaurant').success(function (data){
+        defferer.resolve(data)
+    });
+
+    return defferer.promise;
+});
+
+/*
+app.controller('EventDetailsCtrl',['$scope','$http','$location','$routeParams','$sce',function($scope, $http, $location, $routeParams, $sce) {
+
+    var event_id = $routeParams.event_id
+    var url = 'API_URL_FOR_JSON';
+
+    $http.jsonp(url).success(function(data) {
+        $scope.event = data;
+        $scope.Area = {
+            Name: "Melbourne",
+            Latitude: data.event.latitude,
+            Longitude: data.event.longitude
+        };
+        $scope.latitude = data.event.latitude;
+        $scope.longitude = data.event.longitude;
+    });
+
+}]);*/
 
 /*var onloadCallback = function() {
     grecaptcha.render('recaptcha', {

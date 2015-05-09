@@ -9,19 +9,35 @@
         <div ng-view></div>
       </div>
 
-  <div ng-show="showRestaurant()" ng-controller="restaurantController">
-    <table class="table table-striped">
+  <div ng-show="showRestaurant()"  ng-init="init('<%= current_user.id unless current_user.nil? %>')" ng-controller="restaurantController">
+    <table class="table restaurant-list">
       <tr ng-repeat="restaurant in restaurants">
         <td>
-          <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{restaurant.name}}</button>
+          <button class="btn btn-default btn-restaurant-left" ng-click="(isCollapsed = !isCollapsed); openInfoWindow($event, restaurant)">{{restaurant.name}}</button>
           <div collapse="isCollapsed">
-            <div class="well well-lg">
+            <div class="well well-lg" ng-controller="RatingCtrl">
               <label translate="ADDRESS"></label>: {{restaurant.address}} </br>
-              <label translate="AVERAGE_RATING"/></label>: {{restaurant.avg}}
+              <label translate="AVERAGE_RATING"/></label>: <star-rating ng-model=restaurant.avg readonly="true"></star-rating>
+              <% if logged_in? %>
+                  <table>
+                    <tr ng-repeat="rate in ratings | filter:{restaurant_id: restaurant.id}">
+                      <td><label translate="MY_RATING"></label>: <star-rating ng-model=rate.rate readonly="false" on-rating-selected="rateFunction(rating, rate)"></star-rating> </td>
+                    </tr>
+                    <tr ng-show="(ratings | filter:{restaurant_id: restaurant.id}).length == 0">
+                      <td> <label translate="NEW_RATING"></label>:<star-rating ng-model=ratingNew on-rating-selected="newRateFunction(rating, restaurant.id)"></star-rating></td>
+                    </tr>
+                  </table>
+              <% end %>
             </div>
           </div>
         </td>
       </tr>
     </table>
+    <div class="map" ng-controller="MapCtrl">
+      <div id="map"></div>
+     <!-- <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+      </div>-->
+    </div>
   </div>
 </div>

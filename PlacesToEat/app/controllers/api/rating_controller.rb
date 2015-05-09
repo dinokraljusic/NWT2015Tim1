@@ -4,6 +4,11 @@ class Api::RatingController < ApplicationController
     respond_with Rating.find(params[:id])
   end
 
+  def index
+    user = User.find(params[:user_id])
+    respond_with user.rating
+  end
+
   def create
     rating = Rating.new(rating_params)
     if rating.save
