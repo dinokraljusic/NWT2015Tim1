@@ -27,7 +27,7 @@ var app = angular.module('probna', [
         'UPDATE_MY_ACCOUNT':'Ažuriraj nalog',
         'SIGN_UP':'Registracija',
         'ADDRESS':'Adresa',
-        'AVERAGE_RATING':'Prosječna ocjena',
+        'AVERAGE_RATING':'Ocjena',
         'MY_RATING' : 'Moja ocjena',
         'NEW_RATING':'Ocjeni',
         'MAKE_RESERVATION':'Napravi rezervaciju'
@@ -53,7 +53,7 @@ var app = angular.module('probna', [
         'UPDATE_MY_ACCOUNT':'Update my account',
         'SIGN_UP':'Sign up',
         'ADDRESS':'Address',
-        'AVERAGE_RATING':'Average rating',
+        'AVERAGE_RATING':'Rating',
         'MY_RATING' : 'My rating',
         'OWNER' : 'Owner',
         'NEW_RATING':'Rate',
