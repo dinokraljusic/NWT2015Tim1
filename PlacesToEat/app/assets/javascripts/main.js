@@ -29,7 +29,8 @@ var app = angular.module('probna', [
         'ADDRESS':'Adresa',
         'AVERAGE_RATING':'Prosječna ocjena',
         'MY_RATING' : 'Moja ocjena',
-        'NEW_RATING':'Ocjeni'
+        'NEW_RATING':'Ocjeni',
+        'MAKE_RESERVATION':'Napravi rezervaciju'
 
     });
     // register english translation table
@@ -55,7 +56,8 @@ var app = angular.module('probna', [
         'AVERAGE_RATING':'Average rating',
         'MY_RATING' : 'My rating',
         'OWNER' : 'Owner',
-        'NEW_RATING':'Rate'
+        'NEW_RATING':'Rate',
+        'MAKE_RESERVATION':'Make reservation'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
