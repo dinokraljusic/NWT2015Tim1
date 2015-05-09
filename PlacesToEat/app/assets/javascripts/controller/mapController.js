@@ -2,6 +2,7 @@ var mapCtrl = app.controller('MapCtrl', function ($scope, $rootScope, restaurant
 
     var mapOptions = {
         zoom: 14,
+        maxZoom: 19,
         center: new google.maps.LatLng(43.8560, 18.3980),
         //mapTypeId: google.maps.MapTypeId.TERRAIN
     }

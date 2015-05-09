@@ -52,27 +52,33 @@ p {
 
 .restaurant-list{
   width: 25%;
-  max-width:200px;
+  max-width:265px;
   min-width:100px;
-  float:left;
+  display: inline-block;
+  //float:left;
   //line-height: 1.7em;
+}
+.navbar-static-top{
+  margin-top:-60px;
+  background: #417fab;//#3b5998
+  //color: #E7E4E4;
+}
+.navbar-right{
+  color: #E7E4E4;
 }
 .btn-restaurant-left{
   background:none;
   border:none;
-  //line-height: 1.7em;
-}
-.map{
-  //width:50%;
-  //float:right;
+  width:90%;
   //line-height: 1.7em;
 }
 
 #map {
  // height:420px;
-  height:80vh;
-  width:70vw;
-  float:right;
+  height:90vh;
+  max-height: 550px;
+  width:74.5%;
+  display:inline-block;
 }
 
 /* header */
