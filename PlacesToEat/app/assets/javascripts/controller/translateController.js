@@ -2,7 +2,7 @@ app.controller('translateController', ['$translate', '$scope', function ($transl
 
     $scope.toggleLanguage = function () {
         $translate.use(($translate.use() === 'en_EN') ? 'bs_BA' : 'en_EN');
-        $scope.url= (($translate.use() === 'en_EN') ? "assets/iconba.ico" : "assets/iconuk.ico");
+        $scope.url= (($translate.use() === 'en_EN') ? "assets/iconba.png" : "assets/iconuk.png");
     };
 }])
 
@@ -12,10 +12,12 @@ app.controller('translateController', ['$translate', '$scope', function ($transl
 
         attrs.$observe("backImg",function(n,o){
             if(!n)
-                n="assets/iconuk.ico"
+                n="assets/iconuk.png"
             element.css({
                 'background-image': 'url(' + n + ')',
-                'background-size' : 'cover'
+                'background-size' : '20px 20px',
+                'margin-top' : '15px',
+                'margin-left': '15px'
             });
         });
     };
