@@ -100,11 +100,18 @@ p {
 }
 
 .button-nav{
-  color: #9d9d9d;
+  color: #E7E4E4;
   background: none;
   border: none;
   padding-top: 14px;
   padding-bottom: 10px;
+}
+
+/*.navbar-nav li a{
+  color: #E7E4E4;
+}*/
+.dropdown-menu{
+  background-color: #417fab;
 }
 
 .button{
@@ -114,9 +121,21 @@ p {
 
 .dropdown-button{
   padding: 3px 20px;
+  //background-color: #417fab;
 }
 
 .language-icon{
   background-repeat: no-repeat;
   margin-top: 8px;
+}
+
+.language-icon-placeholder{
+  margin-right: 8px;
+}
+
+.navbar-inverse .navbar-nav li a{
+  color: #daefff;
+}
+.navbar-inverse .navbar-nav li a:hover{
+  color: #9D9D9D;
 }

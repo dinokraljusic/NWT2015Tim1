@@ -46,7 +46,11 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:id])
     user.update(user_params)
     if user.save
-      render json: user, status: 201, location: [:api, user]
+      respond_to do |format|
+        format.html { redirect_to root_path}
+        format.json { render json: user, status: 201, location: [:api, user]}
+      end
+      #render json: user, status: 201, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422
     end
@@ -55,7 +59,7 @@ class Api::UsersController < ApplicationController
   def new
     @user = User.new
     respond_to do |format|
-      format.html
+      format.html #{ render :partial => 'new'}
       format.json {render :json => @user}
     end
   end
@@ -63,6 +67,7 @@ class Api::UsersController < ApplicationController
   def edit
     if current_user
       @user=current_user
+      render :partial => 'edit'
     else
       flash.now[:danger]="Not logged in!"
     end

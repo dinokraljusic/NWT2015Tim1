@@ -1,3 +1,6 @@
+/**
+ * Created by Dino on 5/10/2015.
+ */
 var mapCtrl = app.controller('MapCtrl', function ($scope, $rootScope, restaurantService, $compile) {
 
     var mapOptions = {

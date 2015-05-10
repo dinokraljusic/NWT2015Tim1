@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html ng-app="probna">
 <html>
 <head >
   <!--<script src="controller/routes.js"></script>-->
@@ -11,7 +10,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <%= stylesheet_link_tag "application" %>
 </head>
-<body>
+<body ng-app="probna">
 <header class="navbar navbar-static-top navbar-inverse">
   <div class="container-fluid">
     <%= link_to "Places To Eat", '#', id: "logo" %>
@@ -19,13 +18,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a translate href="#"> HOME </a></li>
       <!--  <li><%= link_to "Help",   '#' %></li>-->
-
-
-            <li><a  href="#reservation" ng-contoller="reservationCtrl" translate> MAKE_RESERVATION </a></li>
-
-
-
-        <% if logged_in? %>
+       <% if logged_in? %>
+            <li><a href="#reservation" translate> MAKE_RESERVATION </a></li>
             <li>
               <div ng-controller="DropdownCtrl" class="btn-group" dropdown is-open="status.isopen">
                 <button type="button" class="button-nav btn btn-primary dropdown-toggle" dropdown-toggle>
@@ -34,15 +28,16 @@
                 <ul class="dropdown-menu" role="menu">
 
                   <li><a href="#profile" translate> EDIT_PROFILE </a></li>
-                  <li class="dropdown-button"> <%= button_to "{{ 'LOGOUT' | translate }}", logout_path, :method => "delete", :class => "button" %></li>
+                  <li class="dropdown-button" > <%= button_to "{{ 'LOGOUT' | translate }}", logout_path, :method => "delete", :class => "button" %></li>
                 </ul>
               </div>
+            </li>
 
 
         <% else %>
             <li><a translate href="#login"> LOGIN </a></li>
         <% end %>
-        <li> <a back-img={{url}} class="language-icon" ng-controller="translateController" ng-click="toggleLanguage()"></a></li>
+        <li class="language-icon-placeholder"> <a back-img={{url}} class="language-icon" ng-controller="translateController" ng-click="toggleLanguage()"></a></li>
       </ul>
     </nav>
   </div>

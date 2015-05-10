@@ -22,12 +22,20 @@ app.config(function($routeProvider, $locationProvider) {
         when('/profile', {
             templateUrl: '/profile'
         }).
-        when("/reservation",
+        when('/reservation',
         {
-            controller: "reservationCtrl",
+            controller: 'reservationCtrl',
             templateUrl: "api/reservation/create.html"
         }).
         otherwise({
             redirectTo: '/'
         });
+});
+
+app.controller("signupController", function($scope, $location) {
+   // $route.reload();
+   /* if(!$scope.reloaded) {
+        window.location.reload();
+        $scope.reloaded=true;
+    }*/
 });

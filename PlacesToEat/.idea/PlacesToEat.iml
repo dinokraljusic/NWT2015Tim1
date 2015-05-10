@@ -119,10 +119,14 @@
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v4.2.1, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v4.2.1, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v4.2.1, ruby-2.0.0-p643) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="angular-translate-rails (v2.6.0, ruby-2.0.0-p643) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="angular-ui-bootstrap-rails (v0.12.1, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="angularjs-rails (v1.2.26, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v6.0.0, ruby-2.0.0-p643) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="autoprefixer-rails (v5.1.11, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.10, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="binding_of_caller (v0.7.2, ruby-2.0.0-p643) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v3.3.4.1, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.2, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.9.1, ruby-2.0.0-p643) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v4.0.3, ruby-2.0.0-p643) [gem]" level="application" />

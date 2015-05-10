@@ -2,6 +2,7 @@ class PasswordResetController < ApplicationController
   before_action :get_user,         only: [:edit]
   before_action :check_expiration, only: [:edit]
   def new
+    render :partial => 'new';
   end
 
   def edit
