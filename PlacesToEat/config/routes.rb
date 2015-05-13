@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   get 'activate_user' => 'sessions#new'
 
+  get 'api/reservation/show'
 
+  post   'reservation'   => 'api/reservation#create'
+
+  get 'reservation'   => 'api/reservation#show'
 
   #get 'all_users/index'
 
