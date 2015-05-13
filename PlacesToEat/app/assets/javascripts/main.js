@@ -30,7 +30,8 @@ var app = angular.module('probna', [
         'AVERAGE_RATING':'Ocjena',
         'MY_RATING' : 'Moja ocjena',
         'NEW_RATING':'Ocjeni',
-        'MAKE_RESERVATION':'Napravi rezervaciju'
+        'MAKE_RESERVATION':'Napravi rezervaciju',
+        'SEARCH' : 'Pretraga'
 
     });
     // register english translation table
@@ -57,7 +58,8 @@ var app = angular.module('probna', [
         'MY_RATING' : 'My rating',
         'OWNER' : 'Owner',
         'NEW_RATING':'Rate',
-        'MAKE_RESERVATION':'Make reservation'
+        'MAKE_RESERVATION':'Make a reservation',
+        'SEARCH' : 'Search'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
