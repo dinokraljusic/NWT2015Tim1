@@ -1,17 +1,18 @@
 <div class="sadrzaj" ng-controller="mainCtrl">
-<!--<h1>Places To Eat Main Page</h1>-->
+  <!--<h1>Places To Eat Main Page</h1>-->
 
 
-      <div id="main">
+  <div id="main">
 
-        <!-- angular templating -->
-        <!-- this is where content will be injected -->
-        <div ng-view></div>
-      </div>
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div ng-view></div>
+  </div>
 
   <div ng-show="showRestaurant()"  ng-init="init('<%= current_user.id unless current_user.nil? %>')" ng-controller="restaurantController">
     <table class="table restaurant-list">
-      <tr ng-repeat="restaurant in restaurants">
+      <tr><td><input type="text" class="" ng-change="change()" value=" " ng-controller="restaurantController" ng-model="pretraga" id="pretragafield"></td></tr>
+      <tr ng-repeat="restaurant in restaurants | filter: filterByName" ng-controller="restaurantController">
         <td>
           <button class="btn btn-default btn-restaurant-left" ng-click="(isCollapsed = !isCollapsed); openInfoWindow($event, restaurant)">{{restaurant.name}}</button>
           <div collapse="isCollapsed">
@@ -35,9 +36,9 @@
     </table>
     <div id="map" class="map" ng-controller="MapCtrl">
       <div></div>
-     <!-- <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
-        <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
-      </div>-->
+      <!-- <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+       </div>-->
     </div>
   </div>
 </div>
