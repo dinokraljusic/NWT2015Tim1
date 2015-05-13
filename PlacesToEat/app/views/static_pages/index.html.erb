@@ -8,9 +8,10 @@
     <!-- this is where content will be injected -->
     <div ng-view></div>
   </div>
-
+  <!--<label translate="SEARCH">SEARCH</label>-->
   <div ng-show="showRestaurant()"  ng-init="init('<%= current_user.id unless current_user.nil? %>')" ng-controller="restaurantController">
     <table class="table restaurant-list">
+
       <tr><td><input type="text" class="" ng-change="change()" value=" " ng-controller="restaurantController" ng-model="pretraga" id="pretragafield"></td></tr>
       <tr ng-repeat="restaurant in restaurants | filter: filterByName" ng-controller="restaurantController">
         <td>
