@@ -32,7 +32,8 @@ var app = angular.module('probna', [
         'NEW_RATING':'Ocjeni',
         'MAKE_RESERVATION':'Napravi rezervaciju',
         'ADD_RESTAURANT': 'Dodaj restoran',
-        'MENU': 'Meni'
+        'MENU': 'Meni',
+        'SEARCH' : 'Pretraga'
 
     });
     // register english translation table
@@ -59,9 +60,10 @@ var app = angular.module('probna', [
         'MY_RATING' : 'My rating',
         'OWNER' : 'Owner',
         'NEW_RATING':'Rate',
-        'MAKE_RESERVATION':'Make reservation',
         'ADD_RESTAURANT': 'Add restaurant',
-        'MENU': 'Menu'
+        'MENU': 'Menu',
+        'MAKE_RESERVATION':'Make a reservation',
+        'SEARCH' : 'Search'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);

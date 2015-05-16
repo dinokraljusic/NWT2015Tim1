@@ -1,9 +1,14 @@
 class Api::ReservationController < ApplicationController
   respond_to :json
+=begin
   def show
     respond_with Reservation.find(params[:id])
   end
-
+=end
+  def show
+    render :partial => 'api/reservation/show'
+    ;
+  end
   def create
     reservation = Reservation.new(reservation_params)
     if reservation.save

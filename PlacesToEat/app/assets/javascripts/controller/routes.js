@@ -24,8 +24,8 @@ app.config(function($routeProvider, $locationProvider) {
         }).
         when('/reservation',
         {
-            controller: 'reservationCtrl',
-            templateUrl: "api/reservation/create.html"
+            //controller: 'reservationCtrl',
+            templateUrl: "<%= reservation_path('reservation/create.html') %> "
         }).
         when('/create_restaurant',
         {
