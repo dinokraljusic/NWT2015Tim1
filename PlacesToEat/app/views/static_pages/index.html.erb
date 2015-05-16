@@ -14,8 +14,6 @@
       <tr><td><input type="text" class="" ng-change="change()" value=" " ng-controller="restaurantController" ng-model="pretraga" id="pretragafield"></td>
         <td><div class="glyphicon glyphicon-search" style="padding-top:4px;"> </div></td>
       </tr>
-
-      <tr><td><input type="text" class="" ng-change="change()" value=" " ng-controller="restaurantController" ng-model="pretraga" id="pretragafield"></td></tr>
       <tr ng-repeat="restaurant in restaurants | filter: filterByName" ng-controller="restaurantController">
         <td colspan="2">
           <button class="btn btn-default btn-restaurant-left" ng-click="(isCollapsed = !isCollapsed); openInfoWindow($event, restaurant)">{{restaurant.name}}</button>
