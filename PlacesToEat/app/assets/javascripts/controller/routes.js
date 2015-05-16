@@ -27,6 +27,11 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'reservationCtrl',
             templateUrl: "api/reservation/create.html"
         }).
+        when('/create_restaurant',
+        {
+            //controller: 'reservationCtrl',
+            templateUrl: "/restaurantcreate"
+        }).
         otherwise({
             redirectTo: '/'
         });

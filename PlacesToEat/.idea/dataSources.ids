@@ -63,7 +63,7 @@
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="menu" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="menu" sqlType="VARCHAR" precision="512" scale="0" nullable="true" jdbcType="12"/>
       <column name="lon" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
       <column name="lat" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>

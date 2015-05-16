@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     # We are going to list our resources here
    # resources :users, :only => [:show, :create, :destroy, :update]
     resources :users
-    resources :restaurant, :only => [:show, :create, :destroy, :update, :index]
+    resources :restaurant, :only => [:show, :create, :destroy, :update, :index, :new]
     resources :role, :only => [:show, :create, :destroy, :update]
     resources :rating, :only => [:show, :create, :destroy, :update]
     resources :reservation, :only => [:show, :create, :destroy, :update]
@@ -91,6 +91,9 @@ Rails.application.routes.draw do
     get 'profile' =>  'api/users#edit'
     post 'signup'  =>  'api/users#create'
     get 'profiles' =>  'api/users#index'
+
+    post 'restaurantcreate' => 'api/restaurant#create'
+    get 'restaurantcreate' => 'api/restaurant#new'
 
   #end
   # The priority is based upon order of creation: first created -> highest priority.

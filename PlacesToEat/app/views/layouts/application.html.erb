@@ -28,6 +28,10 @@
                 <ul class="dropdown-menu" role="menu">
 
                   <li><a href="#profile" translate> EDIT_PROFILE </a></li>
+
+                  <% if is_restaurant %>
+                      <li><a href="#create_restaurant" translate> ADD_RESTAURANT </a></li>
+                  <%end%>
                   <li class="dropdown-button" > <%= button_to "{{ 'LOGOUT' | translate }}", logout_path, :method => "delete", :class => "button" %></li>
                 </ul>
               </div>
@@ -44,10 +48,19 @@
 </header>
 <!--<a href="#/allUsers"> All Users </a>-->
 
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="flashMessageCtrl">
   <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
+
+  <!--  <div class="alert alert-notice" ng-show="flash.notice">
+      {{flash.notice}}
+    </div>
+
+    <div class="alert alert-danger" ng-show="flash.alert">
+      {{flash.alert}}
+    </div>
+  </div>-->
 
   <%= yield %>
 </div>

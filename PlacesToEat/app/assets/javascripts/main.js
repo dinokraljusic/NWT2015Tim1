@@ -30,7 +30,9 @@ var app = angular.module('probna', [
         'AVERAGE_RATING':'Ocjena',
         'MY_RATING' : 'Moja ocjena',
         'NEW_RATING':'Ocjeni',
-        'MAKE_RESERVATION':'Napravi rezervaciju'
+        'MAKE_RESERVATION':'Napravi rezervaciju',
+        'ADD_RESTAURANT': 'Dodaj restoran',
+        'MENU': 'Meni'
 
     });
     // register english translation table
@@ -57,7 +59,9 @@ var app = angular.module('probna', [
         'MY_RATING' : 'My rating',
         'OWNER' : 'Owner',
         'NEW_RATING':'Rate',
-        'MAKE_RESERVATION':'Make reservation'
+        'MAKE_RESERVATION':'Make reservation',
+        'ADD_RESTAURANT': 'Add restaurant',
+        'MENU': 'Menu'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
@@ -71,6 +75,27 @@ app.service('restaurantService', function($rootScope, $http, $q){
 
     return defferer.promise;
 });
+
+app.factory("flashMessage", function() {
+    this.message = "";
+    this.show = "";
+    return {
+        setShow: function(show) {
+            this.show = show;
+        },
+        setMessage: function(message) {
+            this.message = message;
+        }
+    };
+});
+
+
+app.controller("flashMessageCtrl", function($scope, $attrs) {
+
+    /*this.notice = $attrs.notice;
+    this.alert  = $attrs.alert;*/
+});
+
 
 /*
 app.controller('EventDetailsCtrl',['$scope','$http','$location','$routeParams','$sce',function($scope, $http, $location, $routeParams, $sce) {

@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
+  def isRestaurant?
+    role_id == 2
+  end
+
   # Sets the password reset attributes.
   def create_reset_digest
     update_attribute(:reset_password_sent_at, Time.zone.now)

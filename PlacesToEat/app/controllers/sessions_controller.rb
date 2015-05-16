@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   #before_action :check_expiration, only: [:new]
   def new
     render :partial => 'new'
-    ;
   end
 
   def create
@@ -15,7 +14,9 @@ class SessionsController < ApplicationController
     else
       # Create an error message.
       flash.now[:danger] = 'Invalid email/password combination'
-      redirect_to root_url #render 'new'
+      render 'static_pages/index' #
+    #  render :partial => 'new'
+      #redirect_to login_url
     end
   end
 
