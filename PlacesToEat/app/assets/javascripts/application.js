@@ -17,5 +17,6 @@
 //= require angular-route
 //= require angular-ui-bootstrap
 //= require angular-translate
+//= require Chart
 
 //= require_tree .

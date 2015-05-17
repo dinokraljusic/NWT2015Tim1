@@ -4,7 +4,7 @@
 'use strict';
 
 var app = angular.module('probna', [
-    'ngRoute', 'ui.bootstrap', 'pascalprecht.translate'], ['$translateProvider', function ($translateProvider) {
+    'ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'chart.js'], ['$translateProvider', function ($translateProvider) {
 
     // register german translation table
     $translateProvider.translations('bs_BA', {
@@ -33,7 +33,8 @@ var app = angular.module('probna', [
         'MAKE_RESERVATION':'Napravi rezervaciju',
         'ADD_RESTAURANT': 'Dodaj restoran',
         'MENU': 'Meni',
-        'SEARCH' : 'Pretraga'
+        'SEARCH' : 'Pretraga',
+        'ADMIN_PANEL' : 'Administracija'
 
     });
     // register english translation table
@@ -63,7 +64,8 @@ var app = angular.module('probna', [
         'ADD_RESTAURANT': 'Add restaurant',
         'MENU': 'Menu',
         'MAKE_RESERVATION':'Make a reservation',
-        'SEARCH' : 'Search'
+        'SEARCH' : 'Search',
+        'ADMIN_PANEL' : 'Administration'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
@@ -76,6 +78,19 @@ app.service('restaurantService', function($rootScope, $http, $q){
     });
 
     return defferer.promise;
+});
+
+app.service('statsService', function($rootScope, $http, $q){
+
+    this.userSignUpStats = function(){
+        var defferer = $q.defer()
+
+        $http.get('/api/user_signup_freq').success(function (data){
+            defferer.resolve(data)
+        });
+
+        return defferer.promise;
+    };
 });
 
 app.factory("flashMessage", function() {

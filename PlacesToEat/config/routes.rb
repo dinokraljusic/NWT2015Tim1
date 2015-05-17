@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'admin/index'
+
   get 'password_reset/new'
 
   post   'pass_reset'   => 'password_reset#create'
@@ -90,6 +92,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api, defaults: { format: :json } do
+    get 'user_signup_freq'  =>  'users#user_signup_freq'
+  end
+
  # namespace :api, defaults: { format: :html } do
     get 'signup'  =>  'api/users#new'
     get 'profile' =>  'api/users#edit'
@@ -98,6 +104,8 @@ Rails.application.routes.draw do
 
     post 'restaurantcreate' => 'api/restaurant#create'
     get 'restaurantcreate' => 'api/restaurant#new'
+
+    get 'admin' => 'admin#index'
 
   #end
   # The priority is based upon order of creation: first created -> highest priority.

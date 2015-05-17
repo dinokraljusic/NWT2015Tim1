@@ -1,6 +1,12 @@
 class Api::UsersController < ApplicationController
   respond_to :json, :html
 
+  #needed for user signup stats on admin page
+  def user_signup_freq
+    users = User.find_by_sql("select count(*) count, date(created_at) created_at from users group by date(created_at)")
+    respond_with users.to_json :methods => :count
+  end
+
   def show
     #respond_with User.find(params[:id])
     user = User.find(params[:id])
@@ -11,6 +17,10 @@ class Api::UsersController < ApplicationController
     end
 =end
     respond_with user
+  end
+
+  def index
+    respond_with User.all
   end
 
   def create
@@ -87,7 +97,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :lastname, :username, :role_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :lastname, :username, :role_id, :sign_in_count)
   end
 
 

@@ -19,6 +19,10 @@ module SessionsHelper
     !current_user.nil? && current_user.isRestaurant?
   end
 
+  def is_admin
+    !current_user.nil? && current_user.isAdmin?
+  end
+
   # Logs out the current user.
   def log_out
     current_user.update_logout_params

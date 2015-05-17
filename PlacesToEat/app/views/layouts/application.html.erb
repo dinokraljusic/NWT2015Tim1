@@ -5,12 +5,6 @@
   <!--<script src="controller/allUsersCtrl.js"></script>-->
   <title>PlacesToEat</title>
   <%= csrf_meta_tags %>
-  <script src="assets/jquery.js"></script>
-  <script src="assets/javascripts/angular.js"></script>
-  <script src="assets/javascripts/angular-route.js"></script>
-  <script src="assets/javascripts/angular-route.js"></script>
-  <script src="assets/javascripts/reservationCtrl.js"></script>
-  <script src="assets/javascripts/controller/routes.js"></script>
   <base href="/">
   <%= javascript_include_tag "application" %>
   <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -23,13 +17,17 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><a translate href="#"> HOME </a></li>
-        <li>
-          <!--<a href="#reservation" translate> MAKE_RESERVATION </a></li>-->
+        <!--<li>
+          <a href="#reservation" translate> MAKE_RESERVATION </a></li>-->
       <!--  <li><%= link_to "Help",   '#' %></li>-->
        <% if logged_in? %>
-
+              <% if is_admin %>
+                <li><a translate href="#admin_panel"> ADMIN_PANEL </a></li>
+            <% else %>
             <li>
               <a href="#reservation" translate> MAKE_RESERVATION </a></li>
+            <li>
+            <%end%>
             <li>
               <div ng-controller="DropdownCtrl" class="btn-group" dropdown is-open="status.isopen">
                 <button type="button" class="button-nav btn btn-primary dropdown-toggle" dropdown-toggle>
@@ -46,9 +44,7 @@
                 </ul>
               </div>
             </li>
-            <div ng-controller="messageCtrl">
-              <div Message> </div>
-            </div>
+
 
         <% else %>
             <li><a translate href="#login"> LOGIN </a></li>
@@ -56,6 +52,9 @@
         <li class="language-icon-placeholder"> <a back-img={{url}} class="language-icon" ng-controller="translateController" ng-click="toggleLanguage()"></a></li>
       </ul>
     </nav>
+  </div>
+  <div ng-controller="MessageCtrl">
+    <div Message> </div>
   </div>
 </header>
 <!--<a href="#/allUsers"> All Users </a>-->

@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     role_id == 2
   end
 
+  def isAdmin?
+    role_id == 1
+  end
+
   # Sets the password reset attributes.
   def create_reset_digest
     update_attribute(:reset_password_sent_at, Time.zone.now)

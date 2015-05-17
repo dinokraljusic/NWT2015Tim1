@@ -32,6 +32,11 @@ app.config(function($routeProvider, $locationProvider) {
             //controller: 'reservationCtrl',
             templateUrl: "/restaurantcreate"
         }).
+        when('/admin_panel',
+        {
+            //controller: 'reservationCtrl',
+            templateUrl: "/admin"
+        }).
         otherwise({
             redirectTo: '/'
         });
