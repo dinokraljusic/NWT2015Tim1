@@ -4,6 +4,11 @@ class Api::RoleController < ApplicationController
     respond_with Role.find(params[:id])
   end
 
+  def index
+    respond_with Role.all
+  end
+
+
   def create
     role = Role.new(role_params)
     if role.save

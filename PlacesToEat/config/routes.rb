@@ -81,7 +81,7 @@ Rails.application.routes.draw do
    # resources :users, :only => [:show, :create, :destroy, :update]
     resources :users
     resources :restaurant, :only => [:show, :create, :destroy, :update, :index, :new]
-    resources :role, :only => [:show, :create, :destroy, :update]
+    resources :role, :only => [:show, :create, :destroy, :update, :index]
     resources :rating, :only => [:show, :create, :destroy, :update]
     resources :reservation, :only => [:show, :create, :destroy, :update]
   end

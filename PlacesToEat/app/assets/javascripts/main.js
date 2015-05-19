@@ -34,7 +34,23 @@ var app = angular.module('probna', [
         'ADD_RESTAURANT': 'Dodaj restoran',
         'MENU': 'Meni',
         'SEARCH' : 'Pretraga',
-        'ADMIN_PANEL' : 'Administracija'
+        'ADMIN_PANEL' : 'Administracija',
+        'STATS_TO_DISPLAY' : 'Prikazati statistiku za',
+        'GRAPH_COLOUR' : 'Boja grafa',
+        'USER_SIGNUP_FREQ' : 'Broj novih korisnika',
+        'RATING_HISTORY' : 'Historijat ocjene',
+        'NUMBER_LOGINS' : 'Broj prijava',
+        'BLUE' : 'Plava',
+        'GREY' : 'Siva',
+        'RED' : 'Crvena',
+        'ORANGE' : 'Narandžasta',
+        'PURPLE' : 'Ljubičasta',
+        'USERS' : 'Korisnici',
+        'STATS' : 'Statistika',
+        'ROLE' : 'Uloga',
+        'ACTIVE' : 'Aktivan',
+        'DELETE_USER' : 'Izbriši korisnika',
+        'APPLY' : 'Primijeni'
 
     });
     // register english translation table
@@ -65,7 +81,23 @@ var app = angular.module('probna', [
         'MENU': 'Menu',
         'MAKE_RESERVATION':'Make a reservation',
         'SEARCH' : 'Search',
-        'ADMIN_PANEL' : 'Administration'
+        'ADMIN_PANEL' : 'Administration',
+        'STATS_TO_DISPLAY' : 'Stats to display',
+        'GRAPH_COLOUR' : 'Graph colour',
+        'USER_SIGNUP_FREQ' : 'User signup frequency',
+        'RATING_HISTORY' : 'Rating history',
+        'NUMBER_LOGINS' : 'Number of logins',
+        'BLUE' : 'Blue',
+        'GREY' : 'Grey',
+        'RED' : 'Red',
+        'ORANGE' : 'Orange',
+        'PURPLE' : 'Purple',
+        'USERS' : 'Users',
+        'STATS' : 'Statistics',
+        'ROLE' : 'Role',
+        'ACTIVE' : 'Active',
+        'DELETE_USER' : 'Delete user',
+        'APPLY' : 'Apply'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
