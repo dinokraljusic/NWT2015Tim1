@@ -24,20 +24,21 @@
         </table>
       </div>
       <div ng-show="showStats">
-        {{'STATS_TO_DISPLAY' | translate}}:
+        &nbsp;&nbsp;{{'STATS_TO_DISPLAY' | translate}}:
         <select  ng-model="selectedItem" ng-change="selectChange()" ng-init="selectedItem='signups'">
           <option value="signups" selected="selected">{{'USER_SIGNUP_FREQ' | translate}}</option>
           <option value="rating_history">{{'RATING_HISTORY' | translate}}</option>
           <option value="number_of_logins">{{'NUMBER_LOGINS' | translate}}</option>
           <option value="nesto">{{'SOMETHING' | translate}}</option>
         </select>
-        {{'GRAPH_COLOUR' | translate}}:
+        &nbsp;&nbsp;{{'GRAPH_COLOUR' | translate}}:
         <select  ng-model="selectedColourItem" ng-change="selectColourChange()" ng-init="selectedColourItem='blue'">
           <option value="blue" selected="selected">{{'BLUE' | translate}}</option>
           <option value="grey">{{'GREY' | translate}}</option>
           <option value="red">{{'RED' | translate}}</option>
           <option value="orange">{{'ORANGE' | translate}}</option>
           <option value="purple">{{'PURPLE' | translate}}</option>
+          <option value="green">{{'GREEN' | translate}}</option>
         </select>
         <div>
           <canvas id="line" class="chart chart-line" data="data"

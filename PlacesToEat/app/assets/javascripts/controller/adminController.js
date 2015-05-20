@@ -106,6 +106,16 @@ var adminController = app.controller('adminController', function ($scope, $http,
                 "pointHighlightStroke": "rgba(151,187,205,1)"
             }];
         }
+        else if ($scope.selectedColourItem == 'green') {
+            $scope.colours = [{
+                "fillColor": "rgba(42,184,67,0.1)",
+                "strokeColor": "rgba(42,184,71,1)",
+                "pointColor": "rgba(42,184,81,1))",
+                "pointStrokeColor": "#888",
+                "pointHighlightFill": "#999",
+                "pointHighlightStroke": "rgba(151,187,205,1)"
+            }];
+        }
     };
 
     $scope.deleteUser = function (user) {
