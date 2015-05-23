@@ -72,6 +72,10 @@ var adminController = app.controller('adminController', function ($scope, $http,
             else if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem!=null){
                 $scope.labels.push($scope.chart_data[i].updated_at.toString());
                 $scope.data[0].push($scope.chart_data[i].rate.toString());
+                if(i==$scope.chart_data.length-1){
+                    $scope.data[0].push("0");
+                    //labels.push(labels[])
+                }
             }
 
         }
