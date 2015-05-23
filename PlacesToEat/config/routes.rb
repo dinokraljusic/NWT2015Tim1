@@ -94,6 +94,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     get 'user_signup_freq'  =>  'users#user_signup_freq'
+    get 'restaurant_rate_hist/:restaurant_id'  =>  'rating#rating_history'
   end
 
  # namespace :api, defaults: { format: :html } do

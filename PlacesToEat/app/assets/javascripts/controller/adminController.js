@@ -1,7 +1,7 @@
 /**
  * Created by Dino on 5/17/2015.
  */
-var adminController = app.controller('adminController', function ($scope, $http, statsService) {
+var adminController = app.controller('adminController', function ($scope, $http, statsService, restaurantService) {
     window.MY_SCOPE = $scope;
 
     $scope.usersClick = function () {
@@ -35,7 +35,20 @@ var adminController = app.controller('adminController', function ($scope, $http,
 
     function getUserSignupStats() {
         statsService.userSignUpStats().then(function (data) {
-            $scope.chart_data = data
+            $scope.chart_data = data;
+
+            $scope.options = {
+                responsive: true,
+                maintainAspectRatio: true,
+                animation: true
+            };
+            setChartParams();
+        });
+    };
+
+    function getRestaurantRatingHistoryStats() {
+        statsService.restaurantRateHistStats($scope.selectedRestaurantItem).then(function (data) {
+            $scope.chart_data = data;
 
             $scope.options = {
                 responsive: true,
@@ -52,8 +65,15 @@ var adminController = app.controller('adminController', function ($scope, $http,
         $scope.series = [];
         $scope.data[0] = [];
         for (var i = 0; i < $scope.chart_data.length; i++) {
-            $scope.labels.push($scope.chart_data[i].created_at.toString());
-            $scope.data[0].push($scope.chart_data[i].count);
+            if ($scope.selectedItem == 'signups'){
+                $scope.labels.push($scope.chart_data[i].created_at.toString());
+                $scope.data[0].push($scope.chart_data[i].count);
+            }
+            else if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem!=null){
+                $scope.labels.push($scope.chart_data[i].updated_at.toString());
+                $scope.data[0].push($scope.chart_data[i].rate.toString());
+            }
+
         }
 
         if ($scope.selectedColourItem == 'blue' || $scope.selectedColourItem == null) {
@@ -143,6 +163,11 @@ var adminController = app.controller('adminController', function ($scope, $http,
         makeChart();
     };
 
+    $scope.selectRestaurantChange = function () {
+        // $scope.selectedItem
+        makeChart();
+    };
+
     $scope.selectColourChange = function () {
         setChartParams();
         // $scope.selectedItem
@@ -197,6 +222,9 @@ var adminController = app.controller('adminController', function ($scope, $http,
     function makeChart() {
         if ($scope.selectedItem == 'signups')
             getUserSignupStats();
+        else if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem!=null)
+            getRestaurantRatingHistoryStats();
+
         //var labels = [];
 
 
@@ -222,6 +250,16 @@ var adminController = app.controller('adminController', function ($scope, $http,
          };*/
     };
 
+    restaurantService.then(function (data) {
+        $scope.restaurants = data;
+        var rest_all = {
+            "id": 0,
+            "name": ".All"
+        };
+        $scope.restaurants.push(rest_all);
+    });
+
 });
 
 adminController.$inject = ['$scope', '$http', 'statsService'];
+adminController.$inject = ['$scope', '$http', 'restaurantService'];

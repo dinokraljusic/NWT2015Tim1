@@ -125,6 +125,16 @@ app.service('statsService', function($rootScope, $http, $q){
 
         return defferer.promise;
     };
+
+    this.restaurantRateHistStats = function(restaurant_id){
+        var defferer = $q.defer()
+
+        $http.get('/api/restaurant_rate_hist/' + restaurant_id).success(function (data){
+            defferer.resolve(data)
+        });
+
+        return defferer.promise;
+    };
 });
 
 app.factory("flashMessage", function() {

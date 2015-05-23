@@ -43,6 +43,7 @@
         </br>
         <div ng-show="selectedItem=='rating_history'">
         &nbsp;&nbsp;{{'RESTAURANT_TO_DISPLAY' | translate}}:
+          <select ng-options="restaurant.id as restaurant.name for restaurant in restaurants | orderBy:'name'" ng-model="selectedRestaurantItem" ng-change="selectRestaurantChange()" ></select>
         </div>
         <div>
           <canvas id="line" class="chart chart-line" data="data"

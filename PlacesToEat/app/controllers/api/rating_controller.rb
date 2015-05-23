@@ -9,6 +9,12 @@ class Api::RatingController < ApplicationController
     respond_with user.rating
   end
 
+  def rating_history
+    ratings = Rating.find_by_sql("SELECT avg(ra.rate) rate, date(ra.updated_at) updated_at, ra.id, ra.user_id, ra.restaurant_id, ra.created_at from restaurants rest join ratings ra on ra.restaurant_id=rest.id where restaurant_id=" +params[:restaurant_id] +  " group by date(ra.updated_at)")#.find(params[:id])
+    #respond_with ratings.select { |rating| rating.restaurant_id == params[:restaurant_id]}
+    respond_with ratings
+  end
+
   def create
     rating = Rating.new(rating_params)
     if rating.save
