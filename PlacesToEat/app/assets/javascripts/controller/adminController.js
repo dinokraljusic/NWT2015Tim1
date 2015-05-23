@@ -74,6 +74,7 @@ var adminController = app.controller('adminController', function ($scope, $http,
                 $scope.data[0].push($scope.chart_data[i].rate_a.toString());
                 if(i==$scope.chart_data.length-1){
                     $scope.data[0].push("0");
+                    $scope.data[0].push("5");
                     //labels.push(labels[])
                 }
             }
