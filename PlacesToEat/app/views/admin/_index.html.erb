@@ -40,6 +40,10 @@
           <option value="purple">{{'PURPLE' | translate}}</option>
           <option value="green">{{'GREEN' | translate}}</option>
         </select>
+        </br>
+        <div ng-show="selectedItem=='rating_history'">
+        &nbsp;&nbsp;{{'RESTAURANT_TO_DISPLAY' | translate}}:
+        </div>
         <div>
           <canvas id="line" class="chart chart-line" data="data"
                   labels="labels" legend="false" series="series"
