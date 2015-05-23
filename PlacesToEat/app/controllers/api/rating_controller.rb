@@ -10,8 +10,9 @@ class Api::RatingController < ApplicationController
   end
 
   def rating_history
-    ratings = Rating.find_by_sql("SELECT avg(ra.rate) rate, date(ra.updated_at) updated_at, ra.id, ra.user_id, ra.restaurant_id, ra.created_at from restaurants rest join ratings ra on ra.restaurant_id=rest.id where restaurant_id=" +params[:restaurant_id] +  " group by date(ra.updated_at)")#.find(params[:id])
+    #ratings = Rating.find_by_sql("SELECT (SELECT avg(rate) FROM ratings WHERE restaurant_id=" + params[:restaurant_id] + " AND updated_at <= ra.updated_at) rate, date(ra.updated_at) updated_at, ra.id, ra.restaurant_id, ra.created_at FROM restaurants rest join ratings ra on ra.restaurant_id=rest.id WHERE restaurant_id=" + params[:restaurant_id] +  " GROUP BY date(ra.updated_at)")
     #respond_with ratings.select { |rating| rating.restaurant_id == params[:restaurant_id]}
+    ratings = Rating.find_by_sql('SELECT (SELECT avg(rate) FROM ratings WHERE restaurant_id=' + params[:restaurant_id] + ' AND updated_at <= ra.updated_at) rate_a, date(ra.updated_at) updated_at FROM restaurants rest JOIN ratings ra ON ra.restaurant_id=rest.id WHERE restaurant_id=' + params[:restaurant_id] + ' GROUP BY date(ra.updated_at)')
     respond_with ratings
   end
 
