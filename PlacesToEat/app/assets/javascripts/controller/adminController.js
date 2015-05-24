@@ -2,7 +2,15 @@
  * Created by Dino on 5/17/2015.
  */
 var adminController = app.controller('adminController', function ($scope, $http, statsService, restaurantService) {
-    window.MY_SCOPE = $scope;
+    window.MOJ_SCOPE = $scope;
+
+    $scope.displayLine = 'block';
+    $scope.displayBar = 'none';
+
+
+    $scope.showLineChart = function () {
+        return !($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0);
+    };
 
     $scope.usersClick = function () {
         $scope.showUsers = true;
@@ -47,16 +55,27 @@ var adminController = app.controller('adminController', function ($scope, $http,
     };
 
     function getRestaurantRatingHistoryStats() {
-        statsService.restaurantRateHistStats($scope.selectedRestaurantItem).then(function (data) {
-            $scope.chart_data = data;
-
+        if ($scope.selectedRestaurantItem == 0) {
+            $scope.chart_data = $scope.restaurants;
             $scope.options = {
                 responsive: true,
                 maintainAspectRatio: true,
                 animation: true
             };
             setChartParams();
-        });
+        }
+        else {
+            statsService.restaurantRateHistStats($scope.selectedRestaurantItem).then(function (data) {
+                $scope.chart_data = data;
+
+                $scope.options = {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    animation: true
+                };
+                setChartParams();
+            });
+        }
     };
 
     function setChartParams() {
@@ -65,14 +84,23 @@ var adminController = app.controller('adminController', function ($scope, $http,
         $scope.series = [];
         $scope.data[0] = [];
         for (var i = 0; i < $scope.chart_data.length; i++) {
-            if ($scope.selectedItem == 'signups'){
+            if ($scope.selectedItem == 'signups') {
                 $scope.labels.push($scope.chart_data[i].created_at.toString());
                 $scope.data[0].push($scope.chart_data[i].count);
             }
-            else if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem!=null){
+            else if ($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem != 0) {
                 $scope.labels.push($scope.chart_data[i].updated_at.toString());
                 $scope.data[0].push($scope.chart_data[i].rate_a.toString());
-                if(i==$scope.chart_data.length-1){
+                if (i == $scope.chart_data.length - 1) {
+                    $scope.data[0].push("0");
+                    $scope.data[0].push("5");
+                    //labels.push(labels[])
+                }
+            }
+            else if ($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0) {
+                $scope.labels.push($scope.chart_data[i].name.toString());
+                $scope.chart_data[i].avg == null ? $scope.data[0].push("0") : $scope.data[0].push($scope.chart_data[i].avg.toString());
+                if (i == $scope.chart_data.length - 1) {
                     $scope.data[0].push("0");
                     $scope.data[0].push("5");
                     //labels.push(labels[])
@@ -164,98 +192,44 @@ var adminController = app.controller('adminController', function ($scope, $http,
     };
 
     $scope.selectChange = function () {
-        // $scope.selectedItem
+      /*  if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0){
+            angular.element(document.querySelector('#line')).css('display', 'block');
+            angular.element(document.querySelector('#bar')).css('display', 'none');
+        }
+        else{
+            angular.element(document.querySelector('#line')).css('display', 'none');
+            angular.element(document.querySelector('#bar')).css('display', 'block');
+        }*/
         makeChart();
     };
 
     $scope.selectRestaurantChange = function () {
-        // $scope.selectedItem
+        /*if($scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0){
+            angular.element(document.querySelector('#line_div')).css('display', 'none');
+            angular.element(document.querySelector('#bar_div')).css('display', 'block');
+        }
+        else{
+            angular.element(document.querySelector('#line_div')).css('display', 'block');
+            angular.element(document.querySelector('#bar_div')).css('display', 'none');
+        }*/
         makeChart();
     };
 
     $scope.selectColourChange = function () {
         setChartParams();
-        // $scope.selectedItem
-        /*   if ($scope.selectedColourItem == 'red') {
-         $scope.options = {
-         responsive: true,
-         maintainAspectRatio: true,
-         animation: true,
-         scaleGridLineColor: 'rgba(237,45,80,0.2)',
-         fillColor: 'rgba(115,45,80,0.2)'
-         };
-         $scope.colours = [{
-         "fillColor": "rgba(237,45,80,0.2)",
-         "strokeColor": "rgba(237,45,80,1)",
-         "pointColor": "rgba(237,45,80,1)",
-         "pointStrokeColor": "#fff",
-         "pointHighlightFill": "#fff",
-         "pointHighlightStroke": "rgba(151,187,205,1)"
-         }];
-         setChartParams();
-         }
-         if ($scope.selectedColourItem == 'blue') {
-         $scope.options = {
-         responsive: true,
-         maintainAspectRatio: true,
-         animation: true,
-         scaleGridLineColor: 'rgba(75,45,172,0.2)',
-         fillColor: 'rgba(115,45,80,0.2)'
-         };
-         $scope.colours = [{
-         "fillColor": "rgba(237,45,80,0.2)",
-         "strokeColor": "rgba(237,45,80,1)",
-         "pointColor": "rgba(237,45,80,1)",
-         "pointStrokeColor": "#fff",
-         "pointHighlightFill": "#fff",
-         "pointHighlightStroke": "rgba(151,187,205,1)"
-         }];
-         setChartParams();
-         }
-         if ($scope.selectedColourItem == 'grey') {
-         $scope.options = {
-         responsive: true,
-         maintainAspectRatio: true,
-         animation: true,
-         scaleGridLineColor: 'rgba(72,74,80,0.2)',
-         fillColor: 'rgba(115,45,80,0.2)'
-         };
-         setChartParams();
-         }*/
     };
 
     function makeChart() {
         if ($scope.selectedItem == 'signups')
             getUserSignupStats();
-        else if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem!=null)
+        else if ($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null)
             getRestaurantRatingHistoryStats();
 
-        //var labels = [];
 
-
-        /* angular.forEach($scope.chart_data, function(value) {
-         $scope.labels.push(value.created_at)
-         });*/
-
-        // $scope.series = ['Series A'];
-
-        //var data = [];
-
-        /* angular.forEach($scope.chart_data, function(value) {
-         $scope.data.push(value.count)
-         });*/
-
-        //$scope.labels = $scope.chart_data
-        /* $scope.data = [
-         [65, 59, 80, 81, 56, 55, 40],
-         [28, 48, 40, 19, 86, 27, 90]
-         ];*/
-        /*  $scope.onClick = function (points, evt) {
-         console.log(points, evt);
-         };*/
     };
 
     restaurantService.then(function (data) {
+        $scope.restaurants= [];
         $scope.restaurants = data;
         var rest_all = {
             "id": 0,
