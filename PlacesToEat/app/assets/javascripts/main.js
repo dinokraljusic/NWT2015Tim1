@@ -51,7 +51,9 @@ var app = angular.module('probna', [
         'ROLE' : 'Uloga',
         'ACTIVE' : 'Aktivan',
         'DELETE_USER' : 'Izbriši korisnika',
-        'APPLY' : 'Primijeni'
+        'APPLY' : 'Primijeni',
+        'RESTAURANT_TO_DISPLAY':'Odaberi restoran'
+
 
     });
     // register english translation table
@@ -99,7 +101,8 @@ var app = angular.module('probna', [
         'ROLE' : 'Role',
         'ACTIVE' : 'Active',
         'DELETE_USER' : 'Delete user',
-        'APPLY' : 'Apply'
+        'APPLY' : 'Apply',
+        'RESTAURANT_TO_DISPLAY': 'Choose restaurant'
     });
     $translateProvider.preferredLanguage('bs_BA');
 }]);
