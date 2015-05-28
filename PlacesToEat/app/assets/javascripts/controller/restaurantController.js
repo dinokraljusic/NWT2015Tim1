@@ -20,7 +20,8 @@ var restaurantController = app.controller('restaurantController', function($scop
     });
 
     $scope.filterByName = function(restaurant) {
-        if(typeof pretraga !== 'undefined') return restaurant.name.indexOf(pretraga)!=-1;
+        if(restaurant.name==".All") return false;
+        else if(typeof pretraga !== 'undefined' ) return restaurant.name.indexOf(pretraga)!=-1;
         return true;
     };
     $scope.change = function() {

@@ -6,6 +6,9 @@ var adminController = app.controller('adminController', function ($scope, $http,
 
     $scope.displayLine = 'block';
     $scope.displayBar = 'none';
+    $scope.showUsers = true;
+    $scope.showStats = false;
+    getUsers();
 
 
     $scope.showLineChart = function () {
@@ -106,6 +109,10 @@ var adminController = app.controller('adminController', function ($scope, $http,
                     //labels.push(labels[])
                 }
             }
+            else if ($scope.selectedItem == 'number_of_logins') {
+                $scope.labels.push($scope.chart_data[i].email.toString());
+                $scope.data[0].push($scope.chart_data[i].sign_in_count.toString());
+            }
 
         }
 
@@ -192,26 +199,26 @@ var adminController = app.controller('adminController', function ($scope, $http,
     };
 
     $scope.selectChange = function () {
-      /*  if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0){
-            angular.element(document.querySelector('#line')).css('display', 'block');
-            angular.element(document.querySelector('#bar')).css('display', 'none');
-        }
-        else{
-            angular.element(document.querySelector('#line')).css('display', 'none');
-            angular.element(document.querySelector('#bar')).css('display', 'block');
-        }*/
+        /*  if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0){
+         angular.element(document.querySelector('#line')).css('display', 'block');
+         angular.element(document.querySelector('#bar')).css('display', 'none');
+         }
+         else{
+         angular.element(document.querySelector('#line')).css('display', 'none');
+         angular.element(document.querySelector('#bar')).css('display', 'block');
+         }*/
         makeChart();
     };
 
     $scope.selectRestaurantChange = function () {
         /*if($scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0){
-            angular.element(document.querySelector('#line_div')).css('display', 'none');
-            angular.element(document.querySelector('#bar_div')).css('display', 'block');
-        }
-        else{
-            angular.element(document.querySelector('#line_div')).css('display', 'block');
-            angular.element(document.querySelector('#bar_div')).css('display', 'none');
-        }*/
+         angular.element(document.querySelector('#line_div')).css('display', 'none');
+         angular.element(document.querySelector('#bar_div')).css('display', 'block');
+         }
+         else{
+         angular.element(document.querySelector('#line_div')).css('display', 'block');
+         angular.element(document.querySelector('#bar_div')).css('display', 'none');
+         }*/
         makeChart();
     };
 
@@ -224,18 +231,25 @@ var adminController = app.controller('adminController', function ($scope, $http,
             getUserSignupStats();
         else if ($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null)
             getRestaurantRatingHistoryStats();
-
+        else if ($scope.selectedItem == 'number_of_logins') {
+            $scope.chart_data = $scope.users;
+            setChartParams();
+        }
 
     };
 
     restaurantService.then(function (data) {
-        $scope.restaurants= [];
+        $scope.restaurants = [];
         $scope.restaurants = data;
         var rest_all = {
             "id": 0,
             "name": ".All"
         };
-        $scope.restaurants.push(rest_all);
+        var ima = false;
+        for (var i = 0; i < $scope.restaurants.length; i++) {
+            if ($scope.restaurants[i].id == "0") ima = true;
+        }
+        if (!ima) $scope.restaurants.push(rest_all);
     });
 
 });
