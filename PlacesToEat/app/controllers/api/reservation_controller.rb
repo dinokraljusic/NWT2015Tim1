@@ -11,6 +11,7 @@ class Api::ReservationController < ApplicationController
   end
   def create
     reservation = Reservation.new(reservation_params)
+    reservation.user_id = current_user.id
     if reservation.save
       render json: reservation, status: 201, location: [:api, reservation]
     else
@@ -38,6 +39,16 @@ class Api::ReservationController < ApplicationController
     else
       render json: { errors: reservation.errors }, status: 422
     end
+  end
+
+  def new
+    @reservation = Reservation.new
+    @reservation.num = 1
+    #respond_to do |format|
+      #format.html #{ render :partial => 'new'}
+      #format.json {render :json => @user}
+    #end
+    render :partial => 'api/reservation/new'
   end
 
   private

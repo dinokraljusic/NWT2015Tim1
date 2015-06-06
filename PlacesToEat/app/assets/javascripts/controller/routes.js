@@ -25,7 +25,7 @@ app.config(function($routeProvider, $locationProvider) {
         when('/reservation',
         {
             //controller: 'reservationCtrl',
-            templateUrl: "<%= reservation_path('reservation/create.html') %> "
+            templateUrl: "/reservation"
         }).
         when('/create_restaurant',
         {

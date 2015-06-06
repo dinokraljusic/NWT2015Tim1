@@ -97,7 +97,6 @@ var adminController = app.controller('adminController', function ($scope, $http,
                 if (i == $scope.chart_data.length - 1) {
                     $scope.data[0].push("0");
                     $scope.data[0].push("5");
-                    //labels.push(labels[])
                 }
             }
             else if ($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0) {
@@ -106,14 +105,12 @@ var adminController = app.controller('adminController', function ($scope, $http,
                 if (i == $scope.chart_data.length - 1) {
                     $scope.data[0].push("0");
                     $scope.data[0].push("5");
-                    //labels.push(labels[])
                 }
             }
             else if ($scope.selectedItem == 'number_of_logins') {
                 $scope.labels.push($scope.chart_data[i].email.toString());
                 $scope.data[0].push($scope.chart_data[i].sign_in_count.toString());
             }
-
         }
 
         if ($scope.selectedColourItem == 'blue' || $scope.selectedColourItem == null) {
@@ -199,26 +196,12 @@ var adminController = app.controller('adminController', function ($scope, $http,
     };
 
     $scope.selectChange = function () {
-        /*  if($scope.selectedItem == 'rating_history' && $scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0){
-         angular.element(document.querySelector('#line')).css('display', 'block');
-         angular.element(document.querySelector('#bar')).css('display', 'none');
-         }
-         else{
-         angular.element(document.querySelector('#line')).css('display', 'none');
-         angular.element(document.querySelector('#bar')).css('display', 'block');
-         }*/
+
         makeChart();
     };
 
     $scope.selectRestaurantChange = function () {
-        /*if($scope.selectedRestaurantItem != null && $scope.selectedRestaurantItem == 0){
-         angular.element(document.querySelector('#line_div')).css('display', 'none');
-         angular.element(document.querySelector('#bar_div')).css('display', 'block');
-         }
-         else{
-         angular.element(document.querySelector('#line_div')).css('display', 'block');
-         angular.element(document.querySelector('#bar_div')).css('display', 'none');
-         }*/
+
         makeChart();
     };
 

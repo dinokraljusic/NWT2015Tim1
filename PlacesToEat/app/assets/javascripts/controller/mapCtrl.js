@@ -31,9 +31,11 @@ var mapCtrl = app.controller('MapCtrl', function ($scope, $rootScope, restaurant
         google.maps.event.addListener(marker, 'click', function(){
             infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
             infoWindow.open($scope.map, marker);
+            //info.isCollapsed=false;
         });
 
         $rootScope.markers.push(marker);
+
 
     }
 

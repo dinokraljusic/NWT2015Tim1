@@ -16,11 +16,11 @@ Rails.application.routes.draw do
 
   get 'activate_user' => 'sessions#new'
 
-  get 'api/reservation/show'
+  #get 'api/reservation/show'
 
-  post   'reservation'   => 'api/reservation#create'
+  #post   'reservation'   => 'api/reservation#create'
 
-  get 'reservation'   => 'api/reservation#show'
+  #get 'reservation'   => 'api/reservation#show'
 
   #get 'all_users/index'
 
@@ -63,6 +63,9 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  get 'reservation' => 'api/reservation#new'
+  post 'reservation' => 'api/reservation#create'
 
 
 

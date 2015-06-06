@@ -4,7 +4,7 @@
 'use strict';
 
 var app = angular.module('probna', [
-    'ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'chart.js'], ['$translateProvider', function ($translateProvider) {
+    'ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'chart.js', 'angularModalService'], ['$translateProvider', function ($translateProvider) {
 
     // register german translation table
     $translateProvider.translations('bs_BA', {
@@ -159,7 +159,37 @@ app.controller("flashMessageCtrl", function($scope, $attrs) {
     /*this.notice = $attrs.notice;
     this.alert  = $attrs.alert;*/
 });
+///modal
+app.controller('Controller', function($scope, ModalService) {
 
+    $scope.show = function() {
+        ModalService.showModal({
+            templateUrl: 'modal.html',
+            controller: "ModalController"
+        }).then(function(modal1) {
+           // modal1.element.modal();
+
+            var el = document.getElementById("overlay");
+            el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+
+            modal1.close.then(function(result) {
+                $scope.message = "You said " + result;
+            });
+        });
+    };
+
+});
+
+app.controller('ModalController', function($scope, close) {
+
+    $scope.close = function(result) {
+        close(result, 500); // close, but give 500ms for bootstrap to animate
+    };
+
+});
+
+
+//end Modal
 
 /*
 app.controller('EventDetailsCtrl',['$scope','$http','$location','$routeParams','$sce',function($scope, $http, $location, $routeParams, $sce) {

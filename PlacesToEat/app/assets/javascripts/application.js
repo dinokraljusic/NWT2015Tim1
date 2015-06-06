@@ -18,5 +18,6 @@
 //= require angular-ui-bootstrap
 //= require angular-translate
 //= require Chart
+//= require angular-modal-service
 
 //= require_tree .
