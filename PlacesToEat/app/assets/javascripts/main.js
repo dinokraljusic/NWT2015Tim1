@@ -4,7 +4,7 @@
 'use strict';
 
 var app = angular.module('probna', [
-    'ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'chart.js', 'angularModalService'], ['$translateProvider', function ($translateProvider) {
+    'ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'chart.js'], ['$translateProvider', function ($translateProvider) {
 
     // register german translation table
     $translateProvider.translations('bs_BA', {
