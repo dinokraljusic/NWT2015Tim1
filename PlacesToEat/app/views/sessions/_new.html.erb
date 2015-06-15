@@ -11,18 +11,21 @@
 
         <label for="session_password" translate>PASSWORD</label>
 
+
+        <%= f.password_field :password, class: 'form-control' %>
+
         <a href="#resetPassword"><i class="fa fa-comment"></i>
           <label for="(Forgot password)" translate>   FORGOT_PASSWORD</label>
         </a>
-        <%= f.password_field :password, class: 'form-control' %>
+        <br/>
 
         <%= f.submit "{{ 'LOGIN' | translate }}", style: 'margin-top:9px;', class: "btn btn-primary" %>
 
     <% end %>
 
-    <!--<p>New user? <a href="#signup"><i class="fa fa-comment"></i> Sign up now! </a></p>-->
+    <%= link_to "{{ 'SIGN_UP_NOW' | translate }}", signup_path, class:"fa fa-comment", "data-no-turbolink" => true%> <br />
 
-    <%= link_to "{{ 'SIGN_UP_NOW' | translate }}", signup_path, "data-no-turbolink" => true%>
+    <label class="panel-footer" style="font-size:11px;">Testni podaci: <br /> administrator: dk15380@etf.unsa.ba 123456789, vlasnik restorana: kraljusic@outlook.com 123456789, gost: test@test.ba password1234</label>
 
   </div>
 </div>

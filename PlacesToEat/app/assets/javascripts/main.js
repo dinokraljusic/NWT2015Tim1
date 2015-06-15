@@ -95,7 +95,7 @@ var app = angular.module('probna', [
         'RED' : 'Red',
         'ORANGE' : 'Orange',
         'PURPLE' : 'Purple',
-        'GREEN' : 'Zelena',
+        'GREEN' : 'Green',
         'USERS' : 'Users',
         'STATS' : 'Statistics',
         'ROLE' : 'Role',
